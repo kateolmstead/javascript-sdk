@@ -9,11 +9,7 @@ Core Concepts
 * [Prerequisites](#prerequisites)
     * [Signing Up for the PlayRM Service](#signing-up-for-the-playrm-service)
     * [Register Your Game](#register-your-game)
-* [Sample Facebook App](#sample-facebook-app)
-    * [Getting Started](#getting-started)
-    * [Dependencies](#dependencies)
-    * [Disclaimers](#disclaimers)
-    * [Assumptions](#assumptions)
+
 * [Basic Integration](#basic-integration)
     * [Installing the SDK](#installing-the-sdk)
     * [Demographics and Install Attribution](#demographics-and-install-attribution)
@@ -27,6 +23,11 @@ Core Concepts
     * [Setting up a Frame](#setting-up-a-frame)
     * [SDK Integration](#sdk-integration)
     * [Enabling Click-to-JS](#enabling-click-to-js)
+* [Sample Facebook App](#sample-facebook-app)
+    * [Getting Started](#getting-started)
+    * [Dependencies](#dependencies)
+    * [Disclaimers](#disclaimers)
+    * [Assumptions](#assumptions)
 * [Support Issues](#support-issues)
 
 Prerequisites
@@ -39,42 +40,6 @@ Visit <a href="https://controlpanel.playnomics.com/signup" target="_blank">https
 
 ## Register Your Game
 After receiving a registration confirmation email, login to the <a href="https://controlpanel.playnomics.com" target="_blank">control panel</a>. Select the "Applications" tab and create a new application. Your application will be granted an Application ID and an API KEY.
-
-Sample Facebook App
-===================
-## Getting Started
-To use this sample app, create a config.php file based on the config-sample.php and create Facebook Canvas App. You can retrieve these settings from your Facebook app management screen. 
-
-Your PlayRM AppId is available from the <a href="https://controlpanel.playnomics.com" target="_blank">control panel</a>.
-
-```php
-$config = array(
-    "fb" => array(
-        "appId"     => "APP_ID",
-        "secret"    => "APP_SECRET",
-        "namespace" => "APP_NAMESPACE"
-    ),
-    "playnomics"  => array(
-        "appId" => "APP_ID"
-    ),
-);
-```
-## Dependencies
-
-This sample app is written in PHP and JavaScript. It utilizes Facebook's API for PHP and JavaScript, in tandem.
-
-In Q3 of 2013, Facebook will be deprecating Facebook credits and will be rolling out a transaction system that is based in <a href="https://developers.facebook.com/docs/payments/" target="_blank">localized, real currency</a>.
-
-While jQuery and Twitter Bootstrap are both used, they aren't necessary for working with the PlayRM SDK. For jQuery we're using 1.9.1, but <a href="http://www.jquery.com/browser-support/" target="_blank">jQuery 2.x only supports IE 9 and above</a>.
-
-## Disclaimers
-
-This sample code is a very simple use-case; in reality, your game integration might work a lot differently. Again, the goal of this sample is to convey how you can integrate some of the major features of Facebook's SDKs with the PlayRM JavaScript SDK.
-
-## Assumptions
-
-* We treat every user like a new user. In reality, **your game server should keep track of each user that joins your game and report attribution appropriately.**
-* The game store just has two items and everything is hard-coded. Yuck. We also share the store information with the client (JSON object dump) so that we can better understand the transaction taking place. Your implementation will likely be more data-driven, and should be more selective about what information is available to the web browser.
 
 Basic Integration
 =================
@@ -517,6 +482,43 @@ To enable a specific set of JavaScript functions, add the following setting for 
 _pnConfig.adJS_<NAME>="<JS-FUNCTION>";
 ```
 Replace `<NAME>` with any name. This name will be provided in the Playnomics control panel when creating a messaging creative. Replace `<JS-FUNCTION>` with the JavaScript function to be triggered when the user clicks the message.
+
+Sample Facebook App
+===================
+## Getting Started
+To use this sample app, create a config.php file based on the config-sample.php and create Facebook Canvas App. You can retrieve these settings from your Facebook app management screen. 
+
+Your PlayRM AppId is available from the <a href="https://controlpanel.playnomics.com" target="_blank">control panel</a>.
+
+```php
+$config = array(
+    "fb" => array(
+        "appId"     => "APP_ID",
+        "secret"    => "APP_SECRET",
+        "namespace" => "APP_NAMESPACE"
+    ),
+    "playnomics"  => array(
+        "appId" => "APP_ID"
+    ),
+);
+```
+## Dependencies
+
+This sample app is written in PHP and JavaScript. It utilizes Facebook's API for PHP and JavaScript, in tandem.
+
+In Q3 of 2013, Facebook will be deprecating Facebook credits and will be rolling out a transaction system that is based in <a href="https://developers.facebook.com/docs/payments/" target="_blank">localized, real currency</a>.
+
+While jQuery and Twitter Bootstrap are both used, they aren't necessary for working with the PlayRM SDK. For jQuery we're using 1.9.1, but <a href="http://www.jquery.com/browser-support/" target="_blank">jQuery 2.x only supports IE 9 and above</a>.
+
+## Disclaimers
+
+This sample code is a very simple use-case; in reality, your game integration might work a lot differently. Again, the goal of this sample is to convey how you can integrate some of the major features of Facebook's SDKs with the PlayRM JavaScript SDK.
+
+## Assumptions
+
+* We treat every user like a new user. In reality, **your game server should keep track of each user that joins your game and report attribution appropriately.**
+* The game store just has two items and everything is hard-coded. Yuck. We also share the store information with the client (JSON object dump) so that we can better understand the transaction taking place. Your implementation will likely be more data-driven, and should be more selective about what information is available to the web browser.
+
 
 Support Issues
 ==============
