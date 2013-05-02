@@ -1,6 +1,20 @@
 Playnomics PlayRM JavaScript SDK Integration Guide
 ==================================================
-This guide showcases the features of the PlayRM JavaScript SDK and shows how to integrate the full SDK with your game.
+This guide showcases the features of the PlayRM JavaScript SDK and shows how to integrate the SDK with your game.
+
+<img src="http://www.playnomics.com/wp-content/uploads/2013/03/header-flow-chart-02.png"/>
+
+Integration of the PlayRM SDK into existing or new online games takes about 20 minutes for a basic installation and involves calling SDK functions at key points within the game’s JavaScript code base. The SDK communicates with the PlayRM RESTful API, and the events are processed and aggregated for your PlayRM Dashboard in the control panel. 
+
+The SDK includes several modules which track different player behaviors and actions. The first two modules are initialized at or near the beginning of the play session, and the other modules are event-driven.
+
+* [Engagement Module](#installing-the-sdk) - collects geographic and engagement information
+* [User Info Module](#demographics-and-install-attribution) - provides basic user information
+* [Monetization Module](#monetization) - tracks various monetization events
+* [Viral Module](#invitations-and-virality) - tracks the social activities of users
+* [Milestone Module](#custom-event-tracking) - tracks pre-defined significant events in the game experience
+
+The [engagement module](#installing-the-sdk) is available upon install and will automatically start running.
 
 A sample Facebook app is provided to illustrate how you can integrate PlayRM with Facebook's PHP and JavaScript SDKs. You can view the <a href="https://apps.facebook.com/playnomicstest/" target="_blank">live example</a>. However, the PlayRM SDK is not designed to work exclusively with Facebook.
 
@@ -44,19 +58,6 @@ After receiving a registration confirmation email, login to the <a href="https:/
 Basic Integration
 =================
 
-Integration of the PlayRM SDK into existing or new online games takes about 20 minutes for a basic installation and involves calling SDK functions at key points within the game’s JavaScript code base. The SDK communicates with the PlayRM RESTful API, and the events are processed and aggregated for your PlayRM Dashboard in the control panel. 
-
-The SDK includes several modules which track different player behaviors and actions.
-
-The first two modules are initialized at or near the beginning of the play session, and the other modules are event-driven.
-
-* [Engagement Module](#installing-the-sdk) - collects geographic and engagement information
-* [User Info Module](#demographics-and-install-attribution) - provides basic user information
-* [Monetization Module](#monetization) - tracks various monetization events
-* [Viral Module](#invitations-and-virality) - tracks the social activities of users
-* [Milestone Module](#custom-event-tracking) - tracks pre-defined significant events in the game experience
-
-The [engagement module](#installing-the-sdk) is available upon install and will automatically start running.
 
 ## Demographics and Install Attribution
 
@@ -518,7 +519,6 @@ This sample code is a very simple use-case; in reality, your game integration mi
 
 * We treat every user like a new user. In reality, **your game server should keep track of each user that joins your game and report attribution appropriately.**
 * The game store just has two items and everything is hard-coded. Yuck. We also share the store information with the client (JSON object dump) so that we can better understand the transaction taking place. Your implementation will likely be more data-driven, and should be more selective about what information is available to the web browser.
-
 
 Support Issues
 ==============
