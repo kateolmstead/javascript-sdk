@@ -57,10 +57,6 @@ After receiving a registration confirmation email, login to the <a href="https:/
 
 Basic Integration
 =================
-
-
-## Demographics and Install Attribution
-
 The following snippet of code asynchronously loads the SDK into your game canvas; it needs to be configured with your `<APPID>` from the dashboard and it needs to provide a `<USER-ID>`. Once loaded, the SDK will automatically start collecting basic user information (including geography) and engagement data.
 
 ```javascript
