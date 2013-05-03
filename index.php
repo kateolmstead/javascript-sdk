@@ -9,7 +9,7 @@ require 'fb-php-sdk/facebook.php';
 $app_url = 'https://apps.facebook.com/' . $config["fb"]["namespace"] . '/';
 
 //to get an exact birthday we need to ask for that permission
-$scope = 'email,publish_actions,user_birthday';
+$scope = 'email,user_birthday';
 
 // Init the Facebook SDK
 $facebook = new Facebook(array(
@@ -22,11 +22,11 @@ $user_id = $facebook->getUser();
 
 // If the user has not installed the app, redirect them to the Login URL
 if (!$user_id) {
-  	$loginUrl = $facebook->getLoginUrl(array(
+  	$login_url = $facebook->getLoginUrl(array(
 			'scope' => $scope,
 			'redirect_uri' => $app_url,
 	));
-	print('<script> top.location.href=\'' . $loginUrl . '\'</script>');
+	print('<script> top.location.href=\'' . $login_url . '\'</script>');
 	return;
 }
 //for this basic example we're assuming that this player is always new to game,
@@ -146,8 +146,8 @@ foreach($storeBundles as $bundleId => $bundle)
 				initApi : function() {
 					//this frame is specific to this sample game only
 					_pnConfig["b0_barDivId"] ="messageDiv";
-					_pnConfig["b0_frameId"] = "TeO6DdSnVnFP9jMU";
-					_pnConfig["b0_width"] = "728";
+					_pnConfig["b0_frameId"] = "QTOXMQGSSATNPJRE";
+					_pnConfig["b0_width"] = "760";
 					_pnConfig["b0_height"] = "90";
 
 					_pnConfig.userId = "<? echo $user_info["user_id"] ?>";
@@ -198,6 +198,9 @@ if($is_new_user) {
 <?
 }
 ?>
+				}, 
+				onAdClicked : function(){
+					alert("Wow! You clicked this in-game ad!");
 				}
 	    	};
 		</script>

@@ -1,6 +1,11 @@
 Playnomics PlayRM JavaScript SDK Integration Guide
 ==================================================
-This guide showcases the features of the PlayRM JavaScript SDK and shows how to integrate the SDK with your game.
+his guide showcases the features of the PlayRM JavaScript SDK and shows how to integrate the SDK with your game. Our SDK provides game developers with tools for tracking player behavior and engagement so that they can:
+
+* Better understand and segment their audience
+* Reach out to new like-minded players
+* Retain their current audience
+* Ultimately generate more revenue for their games
 
 <img src="http://www.playnomics.com/wp-content/uploads/2013/03/header-flow-chart-02.png"/>
 
@@ -23,7 +28,6 @@ Core Concepts
 * [Prerequisites](#prerequisites)
     * [Signing Up for the PlayRM Service](#signing-up-for-the-playrm-service)
     * [Register Your Game](#register-your-game)
-
 * [Basic Integration](#basic-integration)
     * [Installing the SDK](#installing-the-sdk)
     * [Demographics and Install Attribution](#demographics-and-install-attribution)
@@ -57,7 +61,9 @@ After receiving a registration confirmation email, login to the <a href="https:/
 
 Basic Integration
 =================
-The following snippet of code asynchronously loads the SDK into your game canvas; it needs to be configured with your `<APPID>` from the dashboard and it needs to provide a `<USER-ID>`. Once loaded, the SDK will automatically start collecting basic user information (including geography) and engagement data.
+The following snippet of code asynchronously loads the SDK into your game canvas; it needs to be configured with your `<APPID>` from the dashboard and it needs to provide a `<USER-ID>`. The `<USER-ID>` helps PlayRM to consistently identify each player over their lifetime in a game. 
+
+Once loaded, the SDK will automatically start collecting basic user information (including geography) and engagement data.
 
 ```javascript
 <!-- Start Playnomics API -->
@@ -76,15 +82,37 @@ _pnAPI.type="text/javascript";_pnAPI.async=true;_pnAPI.src=_pnAPIURL;document.bo
 <!-- End Playnomics API -->
 ```
 
-The `<USER-ID>` should be a persistent, anonymized, and unique to each user. Some potential implementations:
+The `<USER-ID>` should be a persistent, anonymized, and unique to each player. This is typically discerned dynamically when a player starts the game. Some potential implementations:
 
 * If your game is a Facebook canvas game, select the user's Third Party ID. The sample application demonstrates how you can do this:
 
 ```php
+<?php
+
+//...
+//...
+
+$facebook = new Facebook(array(
+    'appId'  => $config["fb"]["appId"],
+    'secret' => $config["fb"]["secret"],
+));
+
+// Get the current user
+$user_id = $facebook->getUser();
+
+//...
+//...
+
 $fb_user_profile = $facebook->api("/".$user_id."?fields=gender,third_party_id,birthday");
-//this is the anonymized user ID from facebook
 $user_info["user_id"] = $fb_user_profile["third_party_id"];
 ```
+```javascript 
+<!-- Start Playnomics API -->
+<script type="text/javascript">
+_pnConfig={};
+_pnConfig.userId="<?echo $user_info["user_id"]?>";
+```
+
 * An internal ID (such as a database auto-generated number).
 * A hash of the user’s email address.
 
