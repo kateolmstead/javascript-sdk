@@ -1,6 +1,6 @@
 Playnomics PlayRM JavaScript SDK Integration Guide
 ==================================================
-his guide showcases the features of the PlayRM JavaScript SDK and shows how to integrate the SDK with your game. Our SDK provides game developers with tools for tracking player behavior and engagement so that they can:
+This guide showcases the features of the PlayRM JavaScript SDK and shows how to integrate the SDK with your game. Our SDK provides game developers with tools for tracking player behavior and engagement so that they can:
 
 * Better understand and segment their audience
 * Reach out to new like-minded players
@@ -37,7 +37,7 @@ Core Concepts
         * [Purchases of Items with Premium Currency](#purchases-of-items-with-premium-currency)
     * [Invitations and Virality](#invitations-and-virality)
     * [Custom Event Tracking](#custom-event-tracking)
-* [Messaing Integration](#messaging-integration)
+* [Messaging Integration](#messaging-integration)
     * [Setting up a Frame](#setting-up-a-frame)
     * [SDK Integration](#sdk-integration)
     * [Enabling Click-to-JS](#enabling-click-to-js)
@@ -61,7 +61,7 @@ After receiving a registration confirmation email, login to the <a href="https:/
 
 Basic Integration
 =================
-The following snippet of code asynchronously loads the SDK into your game canvas; it needs to be configured with your `<APPID>` from the dashboard and it needs to provide a `<USER-ID>`. The `<USER-ID>` helps PlayRM to consistently identify each player over their lifetime in a game. 
+The following snippet of code asynchronously loads the SDK into your game canvas; it needs to be configured with your `<APPID>` from the dashboard and it needs to provide a `<USER-ID>`. The `<USER-ID>` helps PlayRM to consistently identify each player over their lifetime in a game.
 
 Once loaded, the SDK will automatically start collecting basic user information (including geography) and engagement data.
 
@@ -106,6 +106,7 @@ $user_id = $facebook->getUser();
 $fb_user_profile = $facebook->api("/".$user_id."?fields=gender,third_party_id,birthday");
 $user_info["user_id"] = $fb_user_profile["third_party_id"];
 ```
+
 ```javascript 
 <!-- Start Playnomics API -->
 <script type="text/javascript">
@@ -302,7 +303,7 @@ var transType = "CurrencyConvert";
 //notice that both currencies are virtual
 pnTransaction(transactionId, null, null, transType, null, [premimumCurrency, attentionCurrency], [premiumCost, attentionAmount],["v","v"]);
 ```
-#### Currency Exchanges
+#### Item Purchases
 
 This is a continuation on the first item purchase example, except with premium currency.
 
