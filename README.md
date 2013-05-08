@@ -7,7 +7,7 @@ This guide showcases the features of the PlayRM JavaScript SDK and shows how to 
 * Retain their current audience
 * Ultimately generate more revenue for their games
 
-<img src="http://www.playnomics.com/wp-content/uploads/2013/03/header-flow-chart-02.png"/>
+<img src="http://www.playnomics.com/assets/img/60-Day-Plan.png"/>
 
 Integration of the PlayRM SDK into existing or new online games takes about 20 minutes for a basic installation and involves calling SDK functions at key points within the game’s JavaScript code base. The SDK communicates with the PlayRM RESTful API, and the events are processed and aggregated for your PlayRM Dashboard in the control panel. 
 
