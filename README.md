@@ -133,27 +133,27 @@ pnUserInfo("update", null, null, sex, birthYear, source, sourceCampaign, install
 If any of the parameters are not available, you should pass `null`.
 <table>
     <tr>
-        <td>`sex`</td>
+        <td><code>sex</code></td>
         <td>M or F</td>
     </tr>
     <tr>
-        <td>`birthYear`</td>
+        <td><code>birthYear</code></td>
         <td>4-digit year, such as 1980</td>
     </tr>
     <tr>
-        <td>`source`</td>
+        <td><code>source</code></td>
         <td>source of the user, such as "FacebookAds", "UserReferral", "Playnomics", etc. These are only suggestions, any 16-character or shorter string is acceptable</td>
     </tr>
     <tr>
-        <td>`sourceCampaign`</td>
+        <td><code>sourceCampaign</code></td>
         <td>any 16-character or shorter string to help identify specific campaigns</td>
     </tr>
     <tr>
-        <td>`sourceUser`</td>
+        <td><code>sourceUser</code></td>
         <td>if the user was acquired via a UserReferral (i.e., a viral message), the userId of the person who initially brought this user into the game</td>
     </tr>
     <tr>
-        <td>`installTime`</td>
+        <td><code>installTime</code></td>
         <td>unix epoch time in seconds when the user originally installed the game</td>
     </tr>
 </table>
