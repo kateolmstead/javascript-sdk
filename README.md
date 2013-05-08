@@ -16,7 +16,7 @@ The SDK includes several modules which track different player behaviors and acti
 * [Engagement Module](#installing-the-sdk) - collects geographic and engagement information
 * [User Info Module](#demographics-and-install-attribution) - provides basic user information
 * [Monetization Module](#monetization) - tracks various monetization events
-* [Viral Module](#invitations-and-virality) - tracks the social activities of users
+* [Viralility Module](#invitations-and-virality) - tracks the social activities of users
 * [Milestone Module](#custom-event-tracking) - tracks pre-defined significant events in the game experience
 
 The [engagement module](#installing-the-sdk) is available upon install and will automatically start running.
