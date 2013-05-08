@@ -7,7 +7,7 @@ This guide showcases the features of the PlayRM JavaScript SDK and shows how to 
 * Retain their current audience
 * Ultimately generate more revenue for their games
 
-<img src="http://www.playnomics.com/assets/img/60-Day-Plan.png"/>
+<img src="http://www.playnomics.com/integration/img/60-Day-Plan.png"/>
 
 Integration of the PlayRM SDK into existing or new online games takes about 20 minutes for a basic installation and involves calling SDK functions at key points within the game’s JavaScript code base. The SDK communicates with the PlayRM RESTful API, and the events are processed and aggregated for your PlayRM Dashboard in the control panel. 
 
@@ -133,27 +133,27 @@ pnUserInfo("update", null, null, sex, birthYear, source, sourceCampaign, install
 If any of the parameters are not available, you should pass `null`.
 <table>
     <tr>
-        <td>sex</td>
+        <td>`sex`</td>
         <td>M or F</td>
     </tr>
     <tr>
-        <td>birthYear</td>
+        <td>`birthYear`</td>
         <td>4-digit year, such as 1980</td>
     </tr>
     <tr>
-        <td>source</td>
-        <td>source of the user, such as "FacebookAds", "UserReferral", "Playnomics", etc. These are only suggestions, and any 16-character or shorter string is acceptable</td>
+        <td>`source`</td>
+        <td>source of the user, such as "FacebookAds", "UserReferral", "Playnomics", etc. These are only suggestions, any 16-character or shorter string is acceptable</td>
     </tr>
     <tr>
-        <td>sourceCampaign</td>
+        <td>`sourceCampaign`</td>
         <td>any 16-character or shorter string to help identify specific campaigns</td>
     </tr>
     <tr>
-        <td>sourceUser</td>
+        <td>`sourceUser`</td>
         <td>if the user was acquired via a UserReferral (i.e., a viral message), the userId of the person who initially brought this user into the game</td>
     </tr>
     <tr>
-        <td>installTime</td>
+        <td>`installTime`</td>
         <td>unix epoch time in seconds when the user originally installed the game</td>
     </tr>
 </table>
@@ -176,19 +176,19 @@ pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes,
 ```
 <table>
     <tr>
-        <td>transactionId</td>
+        <td><code>transactionId</code></td>
         <td>A unique identifier for this transaction. If this is Facebook, you can use the order ID provided to you by Facebook. You can also use an internal ID. If nothing else is available, you can genenate large random number.</td>
     </tr>
     <tr>
-        <td>itemId</td>
+        <td><code>itemId</code></td>
         <td>If applicable, an identifier for the item. The identifier should be consistent.</td>
     </tr>
     <tr>
-        <td>quantity</td>
+        <td><code>quantity</code></td>
         <td>If applicable, the number of items being purchased.</td>
     </tr>
     <tr>
-        <td>type</td>
+        <td><code>type</code></td>
         <td>
             The type of transaction occurring:
             <ul>
@@ -202,13 +202,13 @@ pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes,
         </td>
     </tr>
     <tr>
-        <td>otherUserId</td>
+        <td><code>otherUserId</code></td>
         <td>
             If applicable, the transaction . A contextual example is a user sending a gift to another user.
         </td>
     </tr>
     <tr>
-        <td>currencyTypes</td>
+        <td><code>currencyTypes</code></td>
         <td>
             A string or array of strings, indicating the type of currency being used in the transaction.
             <ul>
@@ -227,13 +227,13 @@ pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes,
         </td>
     </tr>
     <tr>
-        <td>currencyValues</td>
+        <td><code>currencyValues</code></td>
         <td>
             A single numeric value or an array values, indicating the value being spent.
         </td>
     </tr>
     <tr>
-        <td>currencyCategories</td>
+        <td><code>currencyCategories</code></td>
         <td>
             An string or an of strings, indicating whether the currency is <em>virtual</em> "v" or <em>real</em> "r".
         </td>
@@ -332,7 +332,7 @@ pnInvitationSent(invitationId, recipientUserId, recipientAddress, method);
 ```
 <table>
     <tr>
-        <td>invitationId</td>
+        <td><code>invitationId</code></td>
         <td>
             A unique 64-bit integer identifier for this invitation. 
 
@@ -342,17 +342,17 @@ pnInvitationSent(invitationId, recipientUserId, recipientAddress, method);
         </td>
     </tr>
     <tr>
-        <td>recipientUserId</td>
+        <td><code>recipientUserId</code></td>
         <td>This can be a hash/MD5/SHA1 of the recipient's Facebook ID, their Facebook 3rd Party ID or an internal ID. It cannot be a personally identifiable ID.</td>
     </tr>
     <tr>
-        <td>recipientAddress</td>
+        <td><code>recipientAddress</code></td>
         <td>
             An optional way to identify the recipient, for example the <strong>hashed email address</strong>. When using <code>recipientUserId</code> this can be <code>null</code>.
         </td>
     </tr>
     <tr>
-        <td>method</td>
+        <td><code>method</code></td>
         <td>
             The method of the invitation request will include one of the following:
             <ul>
@@ -371,15 +371,15 @@ pnInvitationResponse(invitationId, recipientUserId, response);
 ```
 <table>
     <tr>
-        <td>invitationId</td>
+        <td><code>invitationId</code></td>
         <td>the ID of the corresponding invitation sent event.</td>
     </tr>
     <tr>
-        <td>recipientUserId</td>
+        <td><code>recipientUserId</code></td>
         <td>the recipient ID used in the corresponding invitation sent event</td>
     </tr>
     <tr>
-        <td>response</td>
+        <td><code>response</code></td>
         <td>Currently this only supports "accepted"</td>
     </tr>
 </table>
@@ -410,11 +410,11 @@ pnMilestone(milestoneId, milestoneName);
 These parameters should be replaced:
 <table>
     <tr>
-        <td>milestoneId</td>
+        <td><code>milestoneId</code></td>
         <td>a unique 64-bit numeric identifier for this milestone occurrence</td>
     </tr>
     <tr>
-        <td>milestoneName</td>
+        <td><code>milestoneName</code></td>
         <td>the name of the milestone which should be one of "TUTORIAL" or "CUSTOMn", where n is 1 through 5</td>
     </tr>
 </table>
