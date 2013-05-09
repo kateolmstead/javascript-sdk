@@ -164,10 +164,11 @@ You can extract a lot of this information from the Facebook PHP SDK, particularl
 
 PlayRM provides a flexible interface for tracking monetization events. This module should be called every time a player triggers a monetization event. 
 
-This event tracks users that have monetized and the amount they have spent in total, real currency:
+This event tracks users that have monetized and the amount they have spent in total, *real* currency:
 * FBC (Facebook Credits)
 * USD (US Dollars)
 * OFD (offer valued in USD)
+
 or an in-game *virtual* currency.
 
 ```javascript
@@ -192,19 +193,37 @@ pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes,
         <td>
             The type of transaction occurring:
             <ul>
+                <li>BuyItem: A purchase of virtual item. The <code>quantity</code> is added to the user's inventory</li>
                 <li>
-                    BuyItem
+                    SellItem: A sale of a virtual item to another user. The item is removed from the user's inventory. Note: a sale of an item will result in two events with the same <code>transactionId</code>, one for the sale with type SellItem, and one for the receipt of that sale, with type BuyItem
                 </li>
                 <li>
-                    CurrencyConvert
+                    ReturnItem: A return of a virtual item to the store. The item is removed from the user's inventory
                 </li>
+                <li>BuyService: A purchase of a service, e.g., VIP membership </li>
+                <li>SellService: The sale of a service to another user</li>
+                <li>ReturnService:  The return of a service</li>
+                <li>
+                    CurrencyConvert: An conversion of currency from one form to another, usually in the form of real currency (e.g., US dollars) to virtual currency.  If the type of a transaction is CurrencyConvert, then there should be at least 2 elements in the <code>currencyTypes</code>, <code>currencyValues</code>, and <code>currencyCategoriess</code> arrays
+                </li>
+                <li>Initial: An initial allocation of currency and/or virtual items to a new user</li>
+                <li>Free: Free currency or item given to a user by the application</li>
+                <li>
+                    Reward: Currency or virtual item given by the application as a reward for some action by the user
+                </li>
+                <li>
+                   GiftSend: A virtual item sent from one user to another. 
+
+                   Note: a virtual gift should result in two transaction events with the same <code>transactionId</code>, one with the type GiftSend, and another with the type GiftReceive
+                </li>
+                <li>GiftReceive: A virtual good received by a user. See note for GiftSend type</li>
             </ul>
         </td>
     </tr>
     <tr>
         <td><code>otherUserId</code></td>
         <td>
-            If applicable, the transaction . A contextual example is a user sending a gift to another user.
+            If applicable, the other user involved in the transaction. A contextual example is a user sending a gift to another user.
         </td>
     </tr>
     <tr>
@@ -217,7 +236,6 @@ pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes,
                     <ul>
                         <li>FBC (Facebook Credits)</li>
                         <li>USD (US Dollars)</li>
-                        <li>OFD (offer valued in USD)</li>
                     </ul>
                 </li>
                 <li>
@@ -392,16 +410,16 @@ var recipientUserId = 10000013;
 
 pnInvitationSent(invitationId, recipientUserId, null, null); 
 
-//later on the user accepts the invitation
+//later on the recipient accepts the invitation
 
 pnInvitationResponse(invitationId, recipientUserId, "accepted"); 
 ```
 
 ## Custom Event Tracking
 
-Milestones may be defined in a number of ways.  They may be defined at certain key gameplay points like, finishing a tutorial, or may they refer to other important milestones in a user’s lifecycle. PlayRM, by default, supports up to five custom milestones.  Users can be segmented based on when and how many times they have achieved a particular milestone.
+Milestones may be defined in a number of ways.  They may be defined at certain key gameplay points like, finishing a tutorial, or may they refer to other important milestones in a player's lifecycle. PlayRM, by default, supports up to five custom milestones.  Players can be segmented based on when and how many times they have achieved a particular milestone.
 
-Each time a user reaches a milestone, track the milestone using the JavaScript call:
+Each time a player reaches a milestone, track the milestone using the JavaScript call:
 
 ```javascript
 pnMilestone(milestoneId, milestoneName);
@@ -461,7 +479,7 @@ To configure iframes, email <a href="mailto:support@playnomics.com">support@play
 * Height in pixels (eg "90")
 * Width in pixels (eg "760")
 
-Order in which frames appear in the control panel from top down. Once the frame has been configured, Playnomics will provide you with a `<PLAYRM_FRAMEID>`.
+Order in which frames appear in the control panel from top down. Once the frame has been configured, Playnomics will provide you with a `<PLAYRM-FRAMEID>`.
 
 ## SDK Integration
 
@@ -476,7 +494,7 @@ Then modify the PlayRM SDK config `_pnConfig` to let PlayRM know about your fram
 ```javascript
 //this frame is specific to this sample game only
 _pnConfig["b0_barDivId"] ="messageDiv";
-_pnConfig["b0_frameId"] = "<PLAYRM_FRAMEID>";
+_pnConfig["b0_frameId"] = "<PLAYRM-FRAMEID>";
 _pnConfig["b0_width"] = "760";
 _pnConfig["b0_height"] = "90";
 
