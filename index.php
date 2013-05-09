@@ -146,9 +146,11 @@ foreach($storeBundles as $bundleId => $bundle)
 				initApi : function() {
 					//this frame is specific to this sample game only
 					_pnConfig["b0_barDivId"] ="messageDiv";
-					_pnConfig["b0_frameId"] = "QTOXMQGSSATNPJRE";
+					_pnConfig["b0_frameId"] = "QTOXmqGsSaTnpJRe";
 					_pnConfig["b0_width"] = "760";
 					_pnConfig["b0_height"] = "90";
+
+					_pnConfig.enableAdJS=true;
 
 					_pnConfig.userId = "<? echo $user_info["user_id"] ?>";
 					_pnConfig.onLoadComplete = PlaynomicsSample.onLoadComplete;
