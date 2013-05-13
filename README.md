@@ -1,6 +1,6 @@
 Playnomics PlayRM JavaScript SDK Integration Guide
 ==================================================
-This guide showcases the features of the PlayRM JavaScript SDK and shows how to integrate the SDK with your game. Our SDK provides game developers with tools for tracking player behavior and engagement so that they can:
+This guide showcases the features of the PlayRM JavaScript SDK and shows how to integrate the SDK with your game. Our SDK provides game publishers with tools for tracking player behavior and engagement so that they can:
 
 * Better understand and segment their audience
 * Reach out to new like-minded players
@@ -456,31 +456,11 @@ pnMilestone(milestoneCustom2Id, "CUSTOM2");
 Messaging Integration
 =====================
 
-Upon API initialization, the PlayRM Platform automatically has access to all existing messaging real estate that has been configured. PlayRM messaging is configured differently on browser and mobile. Messaging campaigns are managed and Performance can be tracked in the messaging tab of the control panel. See the messaging campaign creation overview documentation.
+If you're unfamiliar with PlayRM's messaging feature, please refer to <a href="http://integration.playnomics.com" target="_blank">integration documentation</a>.
 
-To configure the PlayRM Internal Messaging system for browser-based applications complete the steps below.
+This guide assumes you're already familiar with the concept of frames and messaging, and that you have all of the relevant `frames` setup for 
 
-**Important!**
-
-Before releasing the integration, production you will need to log into the <a href="https://controlpanel.playnomics.com/signin/" target="_blank">control panel</a> and ensure that you have uploaded the creatives/messages or placeholders. **A frame always needs to have a default creative before it can be launched.**
-
-## Setting up a Frame
-
-A frame occupies a set piece of real estate in the canvas of the game and is responsible for delivering segment-based messages.
-
-PlayRM Browser suports the following for browser-based messaging
-* GIF, PNG, or JPEG format
-* Rollovers are supported
-* Conditional images are not supported
-
-To configure iframes, email <a href="mailto:support@playnomics.com">support@playnomics.com</a> the following information for each `iframe`:
-* Name of app
-* Name of frame (i.e. "Top Banner", "Sidebar", or "Box1")
-* Height in pixels (eg "90")
-* Width in pixels (eg "760")
-
-Order in which frames appear in the control panel from top down. Once the frame has been configured, Playnomics will provide you with a `<PLAYRM-FRAMEID>`.
-
+Assuming you already have your frames available, each with a `<PLAYRM-FRAMEID>`, you can start integrating them into your game.
 ## SDK Integration
 
 To tell PlayRM where to place the frame, you first create an empty DIV element in the appropriate location (the id of the tag is arbitrary):
