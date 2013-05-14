@@ -456,11 +456,12 @@ pnMilestone(milestoneCustom2Id, "CUSTOM2");
 Messaging Integration
 =====================
 
-If you're unfamiliar with PlayRM's messaging feature, please refer to <a href="http://integration.playnomics.com" target="_blank">integration documentation</a>.
+This guide assumes you're already familiar with the concept of frames and messaging, and that you have all of the relevant `frames` setup for your application.
 
-This guide assumes you're already familiar with the concept of frames and messaging, and that you have all of the relevant `frames` setup for 
+If you are new to PlayRM's messaging feature, please refer to <a href="http://integration.playnomics.com" target="_blank">integration documentation</a>.
 
-Assuming you already have your frames available, each with a `<PLAYRM-FRAMEID>`, you can start integrating them into your game.
+Once you have all of your frames created with their associated `<PLAYRM-FRAME-ID>`s, you can start the integration process.
+
 ## SDK Integration
 
 To tell PlayRM where to place the frame, you first create an empty DIV element in the appropriate location (the id of the tag is arbitrary):
@@ -474,7 +475,7 @@ Then modify the PlayRM SDK config `_pnConfig` to let PlayRM know about your fram
 ```javascript
 //this frame is specific to this sample game only
 _pnConfig["b0_barDivId"] ="messageDiv";
-_pnConfig["b0_frameId"] = "<PLAYRM-FRAMEID>";
+_pnConfig["b0_frameId"] = "<PLAYRM-FRAME-ID>";
 _pnConfig["b0_width"] = "760";
 _pnConfig["b0_height"] = "90";
 
