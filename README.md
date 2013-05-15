@@ -270,16 +270,16 @@ A very common monetization strategy is to incentivize players to purchase premiu
 An example of this working in concert with Facebook's Payments Dialog is provided in the Sample App, however, here is a more simplified example:
 
 ```javascript
-//player purchases 500 Gold Coins for 10 USD
+//player purchases 500 MonsterBucks for 10 USD
 
-var quantityCoins = 500;
-var gameCurrency = "Gold Coins";
+var quantityBucks = 500;
+var gameCurrency = "MonsterBucks";
 
 var priceInUSD = 10;
 var transType = "CurrencyConvert";
 
 //it's important that cooresponding currency metadata is consistently positioned in each array
-pnTransaction(transactionId, null, null, transType, null, [gameCurrency, "USD"], [quantityCoins, priceInUSD * -1],  ["v", "r"]);
+pnTransaction(transactionId, null, null, transType, null, [gameCurrency, "USD"], [quantityBucks, priceInUSD * -1],  ["v", "r"]);
 ```
 
 ### Purchases of Items with Real Currency
@@ -287,13 +287,13 @@ pnTransaction(transactionId, null, null, transType, null, [gameCurrency, "USD"],
 An example of this working in concert with Facebook's Payments Dialog is provided in the Sample App, however, here is a more simplified example:
 
 ```javascript
-//player purchases a "Sword" for $.99 USD
-var swordItemId = "Sword"
-var quantitySword = 1;
-var priceOfSword = .99;
+//player purchases a "Monster Trap" for $.99 USD
+var trapItemId = "Monster Trap"
+var quantity = 1;
+var price = .99;
 var transType = "BuyItem";
 
-pnTransaction(tranId, swordItemId, quantitySword, transType, null, "USD", priceOfSword, "r");
+pnTransaction(tranId, trapItemId, quantity, transType, null, "USD", price, "r");
 ```
 
 ### Purchases of Items with Premium Currency
@@ -306,15 +306,15 @@ This is a continuation on the first currency exchange example. It showcases how 
 
 ```javascript
 
-//In this hypothetical, Energy is an attention currency that is earned over the lifetime of the game. 
-//They can also be purchased with the premium Gold Coins that the player may have purchased earlier.
+//In this hypothetical, Mana is an attention currency that is earned over the lifetime of the game. 
+//They can also be purchased with the premium MonsterBucks that the player may have purchased earlier.
 
-//player buys 100 Energy with 10 Gold Coins
-var attentionCurrency = "Energy";
+//player buys 100 Mana with 10 MonsterBucks
+var attentionCurrency = "Mana";
 var attentionAmount = 100;
 
-var premimumCurrency = "Gold Coins";
-var premiumCost = -20;
+var premimumCurrency = "MonsterBucks";
+var premiumCost = -10;
 
 var transType = "CurrencyConvert";
 
@@ -326,14 +326,14 @@ pnTransaction(transactionId, null, null, transType, null, [premimumCurrency, att
 This is a continuation on the first item purchase example, except with premium currency.
 
 ```javascript
-//player buys 20 light armor, for 5 Gold Coins
+//player buys 20 light armor, for 5 MonsterBucks
 
 var itemQuantity = 20;
 var item = "Light Armor";
 
 var transType = "BuyItem";
 
-var premimumCurrency = "Gold Coins";
+var premimumCurrency = "MonsterBucks";
 var premiumCost = 5;
 
 pnTransaction(transactionId, item, itemQuantity, transType, null, premimumCurrency, premiumCost, "v");
