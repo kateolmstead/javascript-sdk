@@ -23,8 +23,8 @@ The [engagement module](#installing-the-sdk) is available upon install and will 
 
 A sample Facebook app is provided to illustrate how you can integrate PlayRM with Facebook's PHP and JavaScript SDKs. You can view the <a href="https://apps.facebook.com/playnomicstest/" target="_blank">live example</a>. However, the PlayRM SDK is not designed to work exclusively with Facebook.
 
-Core Concepts
-=============
+Outline
+=======
 * [Prerequisites](#prerequisites)
     * [Signing Up for the PlayRM Service](#signing-up-for-the-playrm-service)
     * [Register Your Game](#register-your-game)
