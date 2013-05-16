@@ -123,7 +123,9 @@ _pnConfig.userId="<?echo $user_info["user_id"]?>";
 
 ## Demographics and Install Attribution
 
-After the SDK has been loaded, the user info module may be called to collect basic demographic and acquisition information. This data will be used to segment users based on how/where they were acquired and enables improved targeting with basic demographics in addition to the behavioral data collected using other events.
+After the SDK has been loaded, the user info module may be called to collect basic demographic and acquisition information. This 
+data will be used to segment users based on how/where they were acquired and enables improved targeting based on basic
+demographics in addition to the behavioral data collected using other events.
 
 Provide each user's information using this call:
 
@@ -169,7 +171,7 @@ This event tracks users that have monetized and the amount they have spent in to
 * USD (US Dollars)
 * OFD (offer valued in USD)
 
-or an in-game *virtual* currency.
+or an in-game, *virtual* currency.
 
 ```javascript
 pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes, 
@@ -492,8 +494,8 @@ _pnAPI.async=true;_pnAPI.src=_pnAPIURL;document.body.appendChild(_pnAPI);
 
 After the SDK has initialized, PlayRM will automatically find the `<div>` tag and replace it with an `iframe` of the appropriate width and height.
 
-### Enabling Click-to-JS
-Click-To-JS is a feature that allows you to target JavaScript code in your game canvas from a message. You can think of like a dynamic click callback, because the JavaScript to be executed when the user clicks is entirely via the Playnomics control panel. You must, however, explicitally enable this feature in your integration.
+### Enabling Code Callbacks
+Code Callbacks is a feature that allows you to target JavaScript code in your game canvas from a message. You can think of like a dynamic click callback, because the JavaScript to be executed when the user clicks is entirely via the Playnomics control panel. You must, however, explicitally enable this feature in your integration.
 
 To enable any JavaScript function, add the setting:
 
@@ -506,7 +508,9 @@ To enable a specific set of JavaScript functions, add the following setting for 
 ```javascript
 _pnConfig.adJS_<NAME>="<JS-FUNCTION>";
 ```
-Replace `<NAME>` with any name. This name will be provided in the Playnomics control panel when creating a messaging creative. Replace `<JS-FUNCTION>` with the JavaScript function to be triggered when the user clicks the message.
+Replace `<NAME>` with any name. This name will be provided in the Playnomics control panel when creating a messaging creative.
+
+Replace `<JS-FUNCTION>` with the JavaScript function to be triggered when the user clicks the message.
 
 Sample Facebook App
 ===================
