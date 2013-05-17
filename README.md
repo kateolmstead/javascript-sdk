@@ -390,7 +390,7 @@ pnInvitationSent(invitationId, recipientUserId, recipientAddress, method);
     </tr>
 </table>
 
-You can then track each invitation response. The important  thing to note is that you will need to pass the invitationId through the invitation link. Facebook exposes the appRequestIDs through their query string and we illustrate how you can consume them in the Sample App.
+You can then track each invitation response. The important thing to note is that you will need to pass the invitationId through the invitation link. Facebook exposes the appRequestIDs through their query string and we illustrate how you can consume them in the Sample App.
 
 ```javascript
 pnInvitationResponse(invitationId, recipientUserId, response);
@@ -410,7 +410,7 @@ pnInvitationResponse(invitationId, recipientUserId, response);
     </tr>
 </table>
 
-Example calls for a user’s invitation and the recipient’s acceptance:
+Example calls for a player’s invitation and the recipient’s acceptance:
 
 ```javascript
 var invitationId = 112345675;
@@ -437,11 +437,14 @@ These parameters should be replaced:
 <table>
     <tr>
         <td><code>milestoneId</code></td>
-        <td>a unique 64-bit numeric identifier for this milestone occurrence</td>
+        <td>A unique 64-bit numeric identifier for this milestone occurrence</td>
     </tr>
     <tr>
         <td><code>milestoneName</code></td>
-        <td>the name of the milestone which should be one of "TUTORIAL" or "CUSTOMn", where n is 1 through 5</td>
+        <td>
+            The name of the milestone which should be one of "TUTORIAL" or "CUSTOMn", where n is 1 through 5.
+            The name is case-sensitive.
+        </td>
     </tr>
 </table>
 
