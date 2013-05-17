@@ -1,6 +1,6 @@
 Playnomics PlayRM JavaScript SDK Integration Guide
 ==================================================
-This guide showcases the features of the PlayRM JavaScript SDK and shows how to integrate the SDK with your game. Our SDK provides game publishers with tools for tracking player behavior and engagement so that they can:
+This guide showcases the features of the PlayRM JavaScript SDK and shows how to integrate the SDK within your game. Our SDK provides game publishers with tools for tracking player behavior and engagement so they can:
 
 * Better understand and segment their audience
 * Reach out to new like-minded players
@@ -54,7 +54,7 @@ Before you can integrate with the PlayRM SDK you'll need to sign up and register
 
 ## Signing Up for the PlayRM Service
 
-Visit <a href="https://controlpanel.playnomics.com/signup" target="_blank">https://controlpanel.playnomics.com/signup</a> to create an account. The control panel is the dashboard to manage all of the PlayRM features once the SDK integration has been completed.
+Visit <a href="https://controlpanel.playnomics.com/signup" target="_blank">https://controlpanel.playnomics.com/signup</a> to create an account. The control panel is the dashboard to manage PlayRM features once the SDK integration is completed.
 
 ## Register Your Game
 After receiving a registration confirmation email, login to the <a href="https://controlpanel.playnomics.com" target="_blank">control panel</a>. Select the "Applications" tab and create a new application. Your application will be granted an Application ID and an API KEY.
@@ -63,7 +63,7 @@ Basic Integration
 =================
 The following snippet of code asynchronously loads the SDK into your game canvas; it needs to be configured with your `<APPID>` from the dashboard and it needs to provide a `<USER-ID>`. The `<USER-ID>` helps PlayRM to consistently identify each player over their lifetime in a game.
 
-Once loaded, the SDK will automatically start collecting basic user information (including geography) and engagement data.
+Once loaded, the SDK will automatically begin collecting basic user information (including geography) and engagement data.
 
 ```javascript
 <!-- Start Playnomics API -->
@@ -123,9 +123,7 @@ _pnConfig.userId="<?echo $user_info["user_id"]?>";
 
 ## Demographics and Install Attribution
 
-After the SDK has been loaded, the user info module may be called to collect basic demographic and acquisition information. This 
-data will be used to segment players based on how/where they were acquired and enables improved targeting based on basic
-demographics in addition to the behavioral data collected using other events.
+After the SDK is loaded, the user info module may be called to collect basic demographic and acquisition information. This data is used to segment users based on how/where they were acquired and enables improved targeting with basic demographics, in addition to the behavioral data collected using other events.
 
 Provide each player's information using this call:
 
@@ -210,9 +208,9 @@ pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes,
                 </li>
                 <li>BuyService: A purchase of a service, e.g., VIP membership </li>
                 <li>SellService: The sale of a service to another player</li>
-                <li>ReturnService:  The return of a service</li>
+                <li>ReturnService: The return of a service</li>
                 <li>
-                    CurrencyConvert: An conversion of currency from one form to another, usually in the form of real currency (e.g., US dollars) to virtual currency.  If the type of a transaction is CurrencyConvert, then there should be at least 2 elements in the <code>currencyTypes</code>, <code>currencyValues</code>, and <code>currencyCategoriess</code> arrays
+                    CurrencyConvert: An conversion of currency from one form to another, usually in the form of real currency (e.g., US dollars) to virtual currency.  If the type of a transaction is CurrencyConvert, then there should be at least 2 elements in the <code>currencyTypes</code>, <code>currencyValues</code>, and <code>currencyCategoriess</code> arrays.
                 </li>
                 <li>Initial: An initial allocation of currency and/or virtual items to a new player</li>
                 <li>Free: Free currency or item given to a player by the application</li>
@@ -220,7 +218,7 @@ pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes,
                     Reward: Currency or virtual item given by the application as a reward for some action by the player
                 </li>
                 <li>
-                   GiftSend: A virtual item sent from one player to another. 
+                   GiftSend: A virtual item sent from one player to another.
 
                    Note: a virtual gift should result in two transaction events with the same <code>transactionId</code>, one with the type GiftSend, and another with the type GiftReceive
                 </li>
@@ -266,7 +264,7 @@ pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes,
     </tr>
 </table>
 
-We hightlight three common use-cases below. The Sample App covers the first two.
+We highlight three common use-cases below. The Sample App covers the first two.
 * [Purchases of In-Game Currency with Real Currency](#purchases-of-in-game-currency-with-real-currency)
 * [Purchases of Items with Real Currency](#purchases-of-items-with-real-currency)
 * [Purchases of Items with In-Game Currency](#purchases-of-items-with-in-game-currency)
@@ -349,7 +347,7 @@ pnTransaction(transactionId, item, itemQuantity, transType, null, premimumCurren
 
 ## Invitations and Virality
 
-The virality module allows you to track a singular invitation from one player to another (e.g., inviting friends to join a game on Facebook).
+The virality module allows you to track a single invitation from one player to another (e.g., inviting friends to join a game on Facebook).
 
 If multiple requests can be sent at the same time, such as through the Facebook Friend selector, a separate function call should be made for each recipient. The Sample App details how to work with the Facebook Requests dialog.
 
@@ -364,7 +362,7 @@ pnInvitationSent(invitationId, recipientUserId, recipientAddress, method);
 
             If this is a Facebook application, you can use the appRequestId.
 
-            If no identifier is available this could be a hash/MD5/SHA1 of the sender's and neighbor's IDs concatenated. <strong>The resulting identifier can not be personally identifiable.</strong>
+            If no identifier is available, this could be a hash/MD5/SHA1 of the sender's and neighbor's IDs concatenated. <strong>The resulting identifier can not be personally identifiable.</strong>
         </td>
     </tr>
     <tr>
@@ -390,7 +388,7 @@ pnInvitationSent(invitationId, recipientUserId, recipientAddress, method);
     </tr>
 </table>
 
-You can then track each invitation response. The important thing to note is that you will need to pass the invitationId through the invitation link. Facebook exposes the appRequestIDs through their query string and we illustrate how you can consume them in the Sample App.
+You can then track each invitation response. **IMPORTANT:** you will need to pass the invitationId through the invitation link. Facebook exposes the appRequestIDs through their query string and we illustrate how you can consume them in the Sample App.
 
 ```javascript
 pnInvitationResponse(invitationId, recipientUserId, response);
@@ -550,12 +548,12 @@ While jQuery and Twitter Bootstrap are both used, they aren't necessary for work
 
 ## Disclaimers
 
-This sample code is a very simple use-case; in reality, your game integration might work a lot differently. Again, the goal of this sample is to convey how you can integrate some of the major features of Facebook's SDKs with the PlayRM JavaScript SDK.
+This sample code is a very simple use-case; in reality, your game integration might work a lot differently. Again, the goal of this sample app is to convey how you can integrate some of the major features of Facebook's SDKs with the PlayRM JavaScript SDK.
 
 ## Assumptions
 
 * We treat every player like a new player. In reality, **your game server should keep track of each player that joins your game and report attribution appropriately.**
-* The game store just has two items and everything is hard-coded. Yuck. We also share the store information with the client (JSON object dump) so that we can better understand the transaction taking place. Your implementation will likely be more data-driven, and should be more selective about what information is available to the web browser.
+* The game store just has two items and everything is hard-coded. Yuck. We also share the store information with the client (JSON object dump) so that we can better understand the transaction taking place on the client side. Your implementation will likely be more data-driven, and should be more selective about what information is available to the web browser.
 
 Support Issues
 ==============
