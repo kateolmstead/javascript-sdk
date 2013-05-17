@@ -84,7 +84,7 @@ _pnAPI.type="text/javascript";_pnAPI.async=true;_pnAPI.src=_pnAPIURL;document.bo
 
 The `<USER-ID>` should be a persistent, anonymized, and unique to each player. This is typically discerned dynamically when a player starts the game. Some potential implementations:
 
-* If your game is a Facebook canvas game, select the user's Third Party ID. The sample application demonstrates how you can do this:
+* If your game is a Facebook canvas game, select the player's Third Party ID. The sample application demonstrates how you can do this:
 
 ```php
 <?php
@@ -115,19 +115,19 @@ _pnConfig.userId="<?echo $user_info["user_id"]?>";
 ```
 
 * An internal ID (such as a database auto-generated number).
-* A hash of the user’s email address.
+* A hash of the player’s email address.
 
-**You cannot use the user's Facebook ID or any personally identifiable information (plain-text email, name, etc) for the `<USER-ID>`.**
+**You cannot use the player's Facebook ID or any personally identifiable information (plain-text email, name, etc) for the `<USER-ID>`.**
 
 `_pnConfig.onLoadComplete` allows you to optionally pass a callback that will be fired when the SDK has finished initialization. This a common place to call the [user info module](#demographics-and-install-attribution).
 
 ## Demographics and Install Attribution
 
 After the SDK has been loaded, the user info module may be called to collect basic demographic and acquisition information. This 
-data will be used to segment users based on how/where they were acquired and enables improved targeting based on basic
+data will be used to segment players based on how/where they were acquired and enables improved targeting based on basic
 demographics in addition to the behavioral data collected using other events.
 
-Provide each user's information using this call:
+Provide each player's information using this call:
 
 ```javascript
 pnUserInfo("update", null, null, sex, birthYear, source, sourceCampaign, installTime, sourceUser);
@@ -144,19 +144,25 @@ If any of the parameters are not available, you should pass `null`.
     </tr>
     <tr>
         <td><code>source</code></td>
-        <td>source of the user, such as "FacebookAds", "UserReferral", "Playnomics", etc. These are only suggestions, any 16-character or shorter string is acceptable</td>
+        <td>
+            Source of the player, such as "FacebookAds", "UserReferral", "Playnomics", etc. These are only suggestions, any 16-character or shorter string is acceptable
+        </td>
     </tr>
     <tr>
         <td><code>sourceCampaign</code></td>
-        <td>any 16-character or shorter string to help identify specific campaigns</td>
+        <td>Any 16-character or shorter string to help identify specific campaigns.</td>
     </tr>
     <tr>
         <td><code>sourceUser</code></td>
-        <td>if the user was acquired via a UserReferral (i.e., a viral message), the userId of the person who initially brought this user into the game</td>
+        <td>
+            If the player was acquired via a UserReferral (i.e., a viral message), the userId of the person who initially brought this user into the game.
+        </td>
     </tr>
     <tr>
         <td><code>installTime</code></td>
-        <td>unix epoch time in seconds when the user originally installed the game</td>
+        <td>
+            Unix epoch time in seconds when the player originally installed the game.
+        </td>
     </tr>
 </table>
 
@@ -166,7 +172,7 @@ You can extract a lot of this information from the Facebook PHP SDK, particularl
 
 PlayRM provides a flexible interface for tracking monetization events. This module should be called every time a player triggers a monetization event. 
 
-This event tracks users that have monetized and the amount they have spent in total, *real* currency:
+This event tracks players that have monetized and the amount they have spent in total, *real* currency:
 * FBC (Facebook Credits)
 * USD (US Dollars)
 * OFD (offer valued in USD)
@@ -195,37 +201,37 @@ pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes,
         <td>
             The type of transaction occurring:
             <ul>
-                <li>BuyItem: A purchase of virtual item. The <code>quantity</code> is added to the user's inventory</li>
+                <li>BuyItem: A purchase of virtual item. The <code>quantity</code> is added to the player's inventory</li>
                 <li>
-                    SellItem: A sale of a virtual item to another user. The item is removed from the user's inventory. Note: a sale of an item will result in two events with the same <code>transactionId</code>, one for the sale with type SellItem, and one for the receipt of that sale, with type BuyItem
+                    SellItem: A sale of a virtual item to another player. The item is removed from the player's inventory. Note: a sale of an item will result in two events with the same <code>transactionId</code>, one for the sale with type SellItem, and one for the receipt of that sale, with type BuyItem
                 </li>
                 <li>
-                    ReturnItem: A return of a virtual item to the store. The item is removed from the user's inventory
+                    ReturnItem: A return of a virtual item to the store. The item is removed from the player's inventory
                 </li>
                 <li>BuyService: A purchase of a service, e.g., VIP membership </li>
-                <li>SellService: The sale of a service to another user</li>
+                <li>SellService: The sale of a service to another player</li>
                 <li>ReturnService:  The return of a service</li>
                 <li>
                     CurrencyConvert: An conversion of currency from one form to another, usually in the form of real currency (e.g., US dollars) to virtual currency.  If the type of a transaction is CurrencyConvert, then there should be at least 2 elements in the <code>currencyTypes</code>, <code>currencyValues</code>, and <code>currencyCategoriess</code> arrays
                 </li>
-                <li>Initial: An initial allocation of currency and/or virtual items to a new user</li>
-                <li>Free: Free currency or item given to a user by the application</li>
+                <li>Initial: An initial allocation of currency and/or virtual items to a new player</li>
+                <li>Free: Free currency or item given to a player by the application</li>
                 <li>
-                    Reward: Currency or virtual item given by the application as a reward for some action by the user
+                    Reward: Currency or virtual item given by the application as a reward for some action by the player
                 </li>
                 <li>
-                   GiftSend: A virtual item sent from one user to another. 
+                   GiftSend: A virtual item sent from one player to another. 
 
                    Note: a virtual gift should result in two transaction events with the same <code>transactionId</code>, one with the type GiftSend, and another with the type GiftReceive
                 </li>
-                <li>GiftReceive: A virtual good received by a user. See note for GiftSend type</li>
+                <li>GiftReceive: A virtual good received by a player. See note for GiftSend type</li>
             </ul>
         </td>
     </tr>
     <tr>
         <td><code>otherUserId</code></td>
         <td>
-            If applicable, the other user involved in the transaction. A contextual example is a user sending a gift to another user.
+            If applicable, the other player involved in the transaction. A contextual example is a player sending a gift to another player.
         </td>
     </tr>
     <tr>
@@ -300,7 +306,7 @@ pnTransaction(tranId, trapItemId, quantity, transType, null, "USD", price, "r");
 
 ### Purchases of Items with Premium Currency
 
-This event is used to segment monetized users (and potential future monetizers) by collecting information about how and when they spend their premium currency (an in-game currency that is primarily acquired using a *real* currency). This is one level of information deeper than the previous use-cases.
+This event is used to segment monetized players (and potential future monetizers) by collecting information about how and when they spend their premium currency (an in-game currency that is primarily acquired using a *real* currency). This is one level of information deeper than the previous use-cases.
 
 #### Currency Exchanges
 
@@ -343,7 +349,7 @@ pnTransaction(transactionId, item, itemQuantity, transType, null, premimumCurren
 
 ## Invitations and Virality
 
-The virality module allows you to track a singular invitation from one user to another (e.g., inviting friends to join a game on Facebook).
+The virality module allows you to track a singular invitation from one player to another (e.g., inviting friends to join a game on Facebook).
 
 If multiple requests can be sent at the same time, such as through the Facebook Friend selector, a separate function call should be made for each recipient. The Sample App details how to work with the Facebook Requests dialog.
 
@@ -439,7 +445,7 @@ These parameters should be replaced:
     </tr>
 </table>
 
-Example client-side calls for a user’s reaching a milestone, with generated IDs:
+Example client-side calls for a player’s reaching a milestone, with generated IDs:
 
 ```javascript
 function generateLargeId(){
@@ -447,7 +453,7 @@ function generateLargeId(){
   return Math.floor(Math.random() * (Math.pow(2,63)- 1));  
 }
  
-//when the user completes the tutorial
+//when the player completes the tutorial
 var milestoneTutorialId = generateLargeId(); 
 pnMilestone(milestoneTutorialId, "TUTORIAL");
  
@@ -495,7 +501,7 @@ _pnAPI.async=true;_pnAPI.src=_pnAPIURL;document.body.appendChild(_pnAPI);
 After the SDK has initialized, PlayRM will automatically find the `<div>` tag and replace it with an `iframe` of the appropriate width and height.
 
 ### Enabling Code Callbacks
-Code Callbacks is a feature that allows you to target JavaScript code in your game canvas from a message. You can think of like a dynamic click callback, because the JavaScript to be executed when the user clicks is entirely via the Playnomics control panel. You must, however, explicitally enable this feature in your integration.
+Code Callbacks is a feature that allows you to target JavaScript code in your game canvas from a message. You can think of like a dynamic click callback, because the JavaScript to be executed when the player clicks is entirely via the Playnomics control panel. You must, however, explicitally enable this feature in your integration.
 
 To enable any JavaScript function, add the setting:
 
@@ -510,7 +516,7 @@ _pnConfig.adJS_<NAME>="<JS-FUNCTION>";
 ```
 Replace `<NAME>` with any name. This name will be provided in the Playnomics control panel when creating a messaging creative.
 
-Replace `<JS-FUNCTION>` with the JavaScript function to be triggered when the user clicks the message.
+Replace `<JS-FUNCTION>` with the JavaScript function to be triggered when the player clicks the message.
 
 Sample Facebook App
 ===================
@@ -545,7 +551,7 @@ This sample code is a very simple use-case; in reality, your game integration mi
 
 ## Assumptions
 
-* We treat every user like a new user. In reality, **your game server should keep track of each user that joins your game and report attribution appropriately.**
+* We treat every player like a new player. In reality, **your game server should keep track of each player that joins your game and report attribution appropriately.**
 * The game store just has two items and everything is hard-coded. Yuck. We also share the store information with the client (JSON object dump) so that we can better understand the transaction taking place. Your implementation will likely be more data-driven, and should be more selective about what information is available to the web browser.
 
 Support Issues
