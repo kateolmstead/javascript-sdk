@@ -1,25 +1,6 @@
 Playnomics PlayRM JavaScript SDK Integration Guide
 ==================================================
-This guide showcases the features of the PlayRM JavaScript SDK and shows how to integrate the SDK within your game. Our SDK provides game publishers with tools for tracking player behavior and engagement so they can:
-
-* Better understand and segment their audience
-* Reach out to new like-minded players
-* Retain their current audience
-* Ultimately generate more revenue for their games
-
-<img src="http://www.playnomics.com/integration/img/60-Day-Plan.png"/>
-
-Integration of the PlayRM SDK into existing or new online games takes about 20 minutes for a basic installation and involves calling SDK functions at key points within the game’s JavaScript code base. The SDK communicates with the PlayRM RESTful API, and the events are processed and aggregated for your PlayRM Dashboard in the control panel. 
-
-The SDK includes several modules which track different player behaviors and actions. The first two modules are initialized at or near the beginning of the play session, and the other modules are event-driven.
-
-* [Engagement Module](#installing-the-sdk) - collects geographic and engagement information
-* [User Info Module](#demographics-and-install-attribution) - provides basic user information
-* [Monetization Module](#monetization) - tracks various monetization events
-* [Viralility Module](#invitations-and-virality) - tracks the social activities of users
-* [Milestone Module](#custom-event-tracking) - tracks pre-defined significant events in the game experience
-
-The [engagement module](#installing-the-sdk) is available upon install and will automatically start running.
+If you're new to PlayRM or don't yet have an account with <a href="http://www.playnomics.com">Playnomics</a>, please take a moment to <a href="http://integration.playnomics.com/technical/#integration-getting-started">get acquainted with PlayRM</a>.
 
 A sample Facebook app is provided to illustrate how you can integrate PlayRM with Facebook's PHP and JavaScript SDKs. You can view the <a href="https://apps.facebook.com/playnomicstest/" target="_blank">live example</a>. However, the PlayRM SDK is not designed to work exclusively with Facebook.
 
@@ -47,17 +28,6 @@ Outline
     * [Disclaimers](#disclaimers)
     * [Assumptions](#assumptions)
 * [Support Issues](#support-issues)
-
-Prerequisites
-=============
-Before you can integrate with the PlayRM SDK you'll need to sign up and register your game.
-
-## Signing Up for the PlayRM Service
-
-Visit <a href="https://controlpanel.playnomics.com/signup" target="_blank">https://controlpanel.playnomics.com/signup</a> to create an account. The control panel is the dashboard to manage PlayRM features once the SDK integration is completed.
-
-## Register Your Game
-After receiving a registration confirmation email, login to the <a href="https://controlpanel.playnomics.com" target="_blank">control panel</a>. Select the "Applications" tab and create a new application. Your application will be granted an Application ID and an API KEY.
 
 Basic Integration
 =================
@@ -440,7 +410,7 @@ These parameters should be replaced:
     <tr>
         <td><code>milestoneName</code></td>
         <td>
-            The name of the milestone which should be one of "TUTORIAL" or "CUSTOMn", where n is 1 through 5.
+            The name of the milestone which should be "TUTORIAL" or "CUSTOMn", where n is 1 through 5.
             The name is case-sensitive.
         </td>
     </tr>
@@ -473,7 +443,7 @@ Once you have all of your frames created with their associated `<PLAYRM-FRAME-ID
 
 ## SDK Integration
 
-To tell PlayRM where to place the frame, you first create an empty DIV element in the appropriate location (the id of the tag is arbitrary):
+To tell PlayRM where to place the frame, you first create an empty `div` element in the appropriate location (the id of the `div` is arbitrary):
 
 ```html
 <div id="messageDiv"></div>
@@ -485,6 +455,8 @@ Then modify the PlayRM SDK config `_pnConfig` to let PlayRM know about your fram
 //this frame is specific to this sample game only
 _pnConfig["b0_barDivId"] ="messageDiv";
 _pnConfig["b0_frameId"] = "<PLAYRM-FRAME-ID>";
+//the height and width of your frame are configuarable and based
+//on what you set up in the control panel
 _pnConfig["b0_width"] = "760";
 _pnConfig["b0_height"] = "90";
 
