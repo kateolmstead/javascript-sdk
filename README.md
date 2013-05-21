@@ -6,9 +6,6 @@ A sample Facebook app is provided to illustrate how you can integrate PlayRM wit
 
 Outline
 =======
-* [Prerequisites](#prerequisites)
-    * [Signing Up for the PlayRM Service](#signing-up-for-the-playrm-service)
-    * [Register Your Game](#register-your-game)
 * [Basic Integration](#basic-integration)
     * [Installing the SDK](#installing-the-sdk)
     * [Demographics and Install Attribution](#demographics-and-install-attribution)
@@ -21,7 +18,7 @@ Outline
 * [Messaging Integration](#messaging-integration)
     * [Setting up a Frame](#setting-up-a-frame)
     * [SDK Integration](#sdk-integration)
-    * [Enabling Click-to-JS](#enabling-click-to-js)
+    * [Enabling Code Callbacks](#enabling-code-callbacks)
 * [Sample Facebook App](#sample-facebook-app)
     * [Getting Started](#getting-started)
     * [Dependencies](#dependencies)
@@ -530,3 +527,4 @@ This sample code is a very simple use-case; in reality, your game integration mi
 Support Issues
 ==============
 If you have any questions or issues, please contact <a href="mailto:support@playnomics.com">support@playnomics.com</a>.
+
