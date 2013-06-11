@@ -443,7 +443,7 @@ You can now  see the most recent event data sent by the SDK, with any errors fla
 We strongly recommend running the self-check validator before deploying your newly integrated application to production.
 
 ## Switch SDK to Production Mode
-Once you have [validated](#validation) your integration, you can switch the SDK from **test** to **production** mode, simply change the domain of the PlayRM API URL in the [Basic Integration](#basic-integration) step from **js.b.playnomics.net** to **js.a.playnomics.net**:
+Once you have [validated](#validate-integration) your integration, you can switch the SDK from **test** to **production** mode, simply change the domain of the PlayRM API URL in the [Basic Integration](#basic-integration) step from **js.b.playnomics.net** to **js.a.playnomics.net**:
 
 ```javascript
 <!-- Start Playnomics API -->
