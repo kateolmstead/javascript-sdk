@@ -526,5 +526,36 @@ This sample code is a very simple use-case; in reality, your game integration mi
 
 Support Issues
 ==============
+
+## Test Mode
+You may test and verify your application's integration with the self-check validation service.
+
+Simply change the domain of the PlayRM API URL in the [Basic Integration](#basic-integration) step from js.a.playnomics.net to js.b.playnomics.net:
+
+```javascript
+<!-- Start Playnomics API -->
+<script type="text/javascript">
+_pnConfig={};
+_pnConfig.userId="<USER-ID>";
+
+_pnConfig.onLoadComplete = function() {
+    //optionally provide a callback function that is fired when the SDK has been loaded
+};
+
+var _pnAPIURL=document.location.protocol+"//js.b.playnomics.net/v1/api?a=<APPID>",
+_pnAPI=document.createElement("script");
+_pnAPI.type="text/javascript";_pnAPI.async=true;_pnAPI.src=_pnAPIURL;document.body.appendChild(_pnAPI);
+</script>
+<!-- End Playnomics API -->
+```
+
+Once updated, visit the self-check page for your application (https://controlpanel.playnomics.com/validation/`<APPID>`).  You should soon see all event data sent by the SDK, with errors flagged. 
+
+
+We recommend running the self-check validator before deploying your newly integration application to production.
+
+
+## Contact Us
+
 If you have any questions or issues, please contact <a href="mailto:support@playnomics.com">support@playnomics.com</a>.
 
