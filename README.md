@@ -15,6 +15,8 @@ Outline
         * [Purchases of Items with Premium Currency](#purchases-of-items-with-premium-currency)
     * [Invitations and Virality](#invitations-and-virality)
     * [Custom Event Tracking](#custom-event-tracking)
+    * [Validate Integration](#validate-integration)
+    * [Switch SDK to Production Mode](#switch-sdk-to-production-mode)
 * [Messaging Integration](#messaging-integration)
     * [Setting up a Frame](#setting-up-a-frame)
     * [SDK Integration](#sdk-integration)
@@ -28,9 +30,11 @@ Outline
 
 Basic Integration
 =================
-The following snippet of code asynchronously loads the SDK into your game canvas; it needs to be configured with your `<APPID>` from the dashboard and it needs to provide a `<USER-ID>`. The `<USER-ID>` helps PlayRM to consistently identify each player over their lifetime in a game.
 
-Once loaded, the SDK will automatically begin collecting basic user information (including geography) and engagement data.
+## Installing the SDK
+The following code snippet asynchronously loads the SDK into your game canvas in **test mode** (be sure to switch to [production mode](#switch-sdk-to-production-mode) before deploying your application); it needs to be configured with your `<APPID>` from the dashboard, and it must provide a `<USER-ID>`. The `<USER-ID>` helps PlayRM consistently identify each player over their lifetime in a game.
+
+Once loaded, the SDK will automatically begin collecting basic user information (including geography) and engagement data, and send it to the PlayRM test servers.
 
 ```javascript
 <!-- Start Playnomics API -->
@@ -42,7 +46,7 @@ _pnConfig.onLoadComplete = function() {
     //optionally provide a callback function that is fired when the SDK has been loaded
 };
 
-var _pnAPIURL=document.location.protocol+"//js.a.playnomics.net/v1/api?a=<APPID>",
+var _pnAPIURL=document.location.protocol+"//js.b.playnomics.net/v1/api?a=<APPID>",
 _pnAPI=document.createElement("script");
 _pnAPI.type="text/javascript";_pnAPI.async=true;_pnAPI.src=_pnAPIURL;document.body.appendChild(_pnAPI);
 </script>
@@ -82,7 +86,7 @@ _pnConfig.userId="<?echo $user_info["user_id"]?>";
 ```
 
 * An internal ID (such as a database auto-generated number).
-* A hash of the player’s email address.
+* A hash of the player's email address.
 
 **You cannot use the player's Facebook ID or any personally identifiable information (plain-text email, name, etc) for the `<USER-ID>`.**
 
@@ -375,7 +379,7 @@ pnInvitationResponse(invitationId, recipientUserId, response);
     </tr>
 </table>
 
-Example calls for a player’s invitation and the recipient’s acceptance:
+Example calls for a player's invitation and the recipient's acceptance:
 
 ```javascript
 var invitationId = 112345675;
@@ -413,7 +417,7 @@ These parameters should be replaced:
     </tr>
 </table>
 
-Example client-side calls for a player’s reaching a milestone, with generated IDs:
+Example client-side calls for a player's reaching a milestone, with generated IDs:
 
 ```javascript
 function generateLargeId(){
@@ -429,6 +433,30 @@ pnMilestone(milestoneTutorialId, "TUTORIAL");
 var milestoneCustom2Id = generateLargeId(); 
 pnMilestone(milestoneCustom2Id, "CUSTOM2"); 
 ```
+## Validate Integration
+After configuring your selected PlayRM modules, you should verify your application's correct integration with the self-check validation service.
+
+Simply visit the self-check page for your application (```https://controlpanel.playnomics.com/validation/<APPID>```).  You can now  see the most recent event data sent by the SDK, with any errors flagged. 
+
+Visit the  <a href="http://integration.playnomics.com/technical/#self-check">self-check validation guide</a> for more information.
+
+We strongly recommend running the self-check validator before deploying your newly integrated application to production.
+
+## Switch SDK to Production Mode
+Once you have [validated](#validation) your integration, you can switch the SDK from **test** to **production** mode, simply change the domain of the PlayRM API URL in the [Basic Integration](#basic-integration) step from **js.b.playnomics.net** to **js.a.playnomics.net**:
+
+```javascript
+<!-- Start Playnomics API -->
+//...
+
+var _pnAPIURL=document.location.protocol+"//js.a.playnomics.net/v1/api?a=<APPID>",
+
+//...
+<!-- End Playnomics API -->
+```
+If you ever wish to test or troubleshoot your integration later on, simply switch the domain back to **js.b.playnomics.net** and revisit the self-check validation tool.
+
+
 Messaging Integration
 =====================
 
@@ -526,36 +554,6 @@ This sample code is a very simple use-case; in reality, your game integration mi
 
 Support Issues
 ==============
-
-## Test Mode
-You may test and verify your application's integration with the self-check validation service.
-
-Simply change the domain of the PlayRM API URL in the [Basic Integration](#basic-integration) step from js.a.playnomics.net to js.b.playnomics.net:
-
-```javascript
-<!-- Start Playnomics API -->
-<script type="text/javascript">
-_pnConfig={};
-_pnConfig.userId="<USER-ID>";
-
-_pnConfig.onLoadComplete = function() {
-    //optionally provide a callback function that is fired when the SDK has been loaded
-};
-
-var _pnAPIURL=document.location.protocol+"//js.b.playnomics.net/v1/api?a=<APPID>",
-_pnAPI=document.createElement("script");
-_pnAPI.type="text/javascript";_pnAPI.async=true;_pnAPI.src=_pnAPIURL;document.body.appendChild(_pnAPI);
-</script>
-<!-- End Playnomics API -->
-```
-
-Once updated, visit the self-check page for your application (https://controlpanel.playnomics.com/validation/<APPID>).  You should soon see all event data sent by the SDK, with errors flagged. 
-
-
-We recommend running the self-check validator before deploying your newly integration application to production.
-
-
-## Contact Us
 
 If you have any questions or issues, please contact <a href="mailto:support@playnomics.com">support@playnomics.com</a>.
 
