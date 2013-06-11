@@ -436,9 +436,9 @@ pnMilestone(milestoneCustom2Id, "CUSTOM2");
 ## Validate Integration
 After configuring your selected PlayRM modules, you should verify your application's correct integration with the self-check validation service.
 
-Simply visit the self-check page for your application (```https://controlpanel.playnomics.com/validation/<APPID>```).  You can now  see the most recent event data sent by the SDK, with any errors flagged. 
+Simply visit the self-check page for your application: **`https://controlpanel.playnomics.com/validation/<APPID>`**
 
-Visit the  <a href="http://integration.playnomics.com/technical/#self-check">self-check validation guide</a> for more information.
+You can now  see the most recent event data sent by the SDK, with any errors flagged. Visit the  <a href="http://integration.playnomics.com/technical/#self-check">self-check validation guide</a> for more information.
 
 We strongly recommend running the self-check validator before deploying your newly integrated application to production.
 
@@ -454,7 +454,9 @@ var _pnAPIURL=document.location.protocol+"//js.a.playnomics.net/v1/api?a=<APPID>
 //...
 <!-- End Playnomics API -->
 ```
-If you ever wish to test or troubleshoot your integration later on, simply switch the domain back to **js.b.playnomics.net** and revisit the self-check validation tool.
+If you ever wish to test or troubleshoot your integration later on, simply switch the domain back to **js.b.playnomics.net** and revisit the self-check validation tool for your application:
+
+**`https://controlpanel.playnomics.com/validation/<APPID>`**
 
 
 Messaging Integration
