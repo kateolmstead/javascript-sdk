@@ -549,7 +549,7 @@ _pnAPI.type="text/javascript";_pnAPI.async=true;_pnAPI.src=_pnAPIURL;document.bo
 <!-- End Playnomics API -->
 ```
 
-Once updated, visit the self-check page for your application (https://controlpanel.playnomics.com/validation/`<APPID>`).  You should soon see all event data sent by the SDK, with errors flagged. 
+Once updated, visit the self-check page for your application (https://controlpanel.playnomics.com/validation/<APPID>).  You should soon see all event data sent by the SDK, with errors flagged. 
 
 
 We recommend running the self-check validator before deploying your newly integration application to production.
