@@ -426,7 +426,7 @@ function generateLargeId(){
 }
  
 
-//when milestone CUSTOM2 is reached
+//when milestone CUSTOM1 is reached
 var milestoneCustom1Id = generateLargeId(); 
 pnMilestone(milestoneCustom1Id, "CUSTOM1"); 
 ```
