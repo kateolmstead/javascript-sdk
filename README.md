@@ -411,7 +411,7 @@ These parameters should be replaced:
     <tr>
         <td><code>milestoneName</code></td>
         <td>
-            The name of the milestone which should be "TUTORIAL" or "CUSTOMn", where n is 1 through 5.
+            The name of the milestone which should be "CUSTOMn", where n is 1 through 5.
             The name is case-sensitive.
         </td>
     </tr>
@@ -425,13 +425,10 @@ function generateLargeId(){
   return Math.floor(Math.random() * (Math.pow(2,63)- 1));  
 }
  
-//when the player completes the tutorial
-var milestoneTutorialId = generateLargeId(); 
-pnMilestone(milestoneTutorialId, "TUTORIAL");
- 
+
 //when milestone CUSTOM2 is reached
-var milestoneCustom2Id = generateLargeId(); 
-pnMilestone(milestoneCustom2Id, "CUSTOM2"); 
+var milestoneCustom1Id = generateLargeId(); 
+pnMilestone(milestoneCustom1Id, "CUSTOM1"); 
 ```
 ## Validate Integration
 After configuring your selected PlayRM modules, you should verify your application's correct integration with the self-check validation service.
