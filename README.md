@@ -18,7 +18,6 @@ Outline
     * [Validate Integration](#validate-integration)
     * [Switch SDK to Production Mode](#switch-sdk-to-production-mode)
 * [Messaging Integration](#messaging-integration)
-    * [Setting up a Frame](#setting-up-a-frame)
     * [SDK Integration](#sdk-integration)
     * [Enabling Code Callbacks](#enabling-code-callbacks)
 * [Sample Facebook App](#sample-facebook-app)
@@ -461,7 +460,7 @@ Messaging Integration
 
 This guide assumes you're already familiar with the concept of frames and messaging, and that you have all of the relevant `frames` setup for your application.
 
-If you are new to PlayRM's messaging feature, please refer to <a href="http://integration.playnomics.com" target="_blank">integration documentation</a>.
+If you are new to PlayRM's messaging feature, please refer to <a href="http://integration.playnomics.com/support/#core-concepts" target="_blank">Core Concepts for Messaging</a>.
 
 Once you have all of your frames created with their associated `<PLAYRM-FRAME-ID>`s, you can start the integration process.
 
