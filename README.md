@@ -496,6 +496,16 @@ _pnAPI.async=true;_pnAPI.src=_pnAPIURL;document.body.appendChild(_pnAPI);
 
 After the SDK has initialized, PlayRM will automatically find the `<div>` tag and replace it with an `iframe` of the appropriate width and height.
 
+Note: This means that the `<div>` tag must exist in the HTML DOM when the SDK initialized.  To achieve greater control over when the frame appears, you could dynamically control its visibility using CSS property as show in this example:
+
+```
+<div style="display:none" id="GameEndInScreen">
+   <div id="GameEndInScreenFrame"></div>
+</div>
+   <input type="button" onclick="document.getElementById('GameEndInScreen').style.display='block'" value="Show Frame">
+</body></html>
+```
+
 ### Enabling Code Callbacks
 Code Callbacks is a feature that allows you to target JavaScript code in your game canvas from a message. You can think of this as a dynamic click callback, because the JavaScript to be executed when the player clicks is entirely via the Playnomics control panel. You must, however, explicitly enable this feature in your integration.
 
