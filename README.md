@@ -79,7 +79,7 @@ Congratulations! You've completed our basic integration. You will now be able to
 PlayRM is currently operating in test mode. Be sure you switch to production mode, by clicking the button  in the integration validation tool window before deploying your game in an app store.
     
 
-<div id="outline">
+<div class="outline">
 <ul>
 <li>
 <a href="#basic-integration">Basic Integration</a>
