@@ -1,11 +1,17 @@
 Playnomics PlayRM JavaScript SDK Integration Guide
 ==================================================
-If you're new to PlayRM or don't yet have an account with <a href="http://www.playnomics.com">Playnomics</a>, please take a moment to <a href="http://integration.playnomics.com/technical/#integration-getting-started">get acquainted with PlayRM</a>.
-
-A sample Facebook app is provided to illustrate how you can integrate PlayRM with Facebook's PHP and JavaScript SDKs. You can view the <a href="https://apps.facebook.com/playnomicstest/" target="_blank">live example</a>. However, the PlayRM SDK is not designed to work exclusively with Facebook.
 
 
-## Installing the SDK
+
+If you're new to PlayRM and/or don't have a PlayRM account and would like to get started using PlayRM please visit   <a href="https://controlpanel.playnomics.com/signup">https://controlpanel.playnomics.com/signup</a>   to sign up. Soon after creating an account you will receive a registration confirmation email permitting you access to your PlayRM control panel. Within the control panel, click the <strong>Applications</strong> tab and add your application. Upon doing so, you will recieve an <APPID> and an <API KEY>. These two components will enable you to begin the integration process.
+
+Our integration has been optimized to be as straight forward and user friendly as possible. If you're feeling unsure or would like better understand the order the process before beginning integration, please take a moment to check out the <a href="http://integration.playnomics.com/technical/#integration-getting-started">getting started</a> page. Here you can find an overview of our integration process, and platform specific features, to help better acquaint you with the PlayRM integration process.
+
+One last thing... to help contextualize our integration, you can refer to our <strong>sample Facebook app</strong> located in this document. The easiest way to get there is to use the anchor link in the left navigation index. This example illustrates how you can integrate PlayRM with Facebook's PHP and JavaScript SDKs. You can view the <a href="https://apps.facebook.com/playnomicstest/" target="_blank">live example</a>. Keep in mind, the PlayRM Javascript SDK is not Facebook exclusive and will work in any Javascript game context.
+
+
+
+## Basic Integration
 The following code snippet asynchronously loads the SDK into your game canvas in **test mode** (be sure to switch to [production mode](#switch-sdk-to-production-mode) before deploying your application); it needs to be configured with your `<APPID>` from the dashboard, and it must provide a `<USER-ID>`. The `<USER-ID>` helps PlayRM consistently identify each player over their lifetime in a game.
 
 Once loaded, the SDK will automatically begin collecting basic user information (including geography) and engagement data, and send it to the PlayRM test servers.
@@ -73,8 +79,7 @@ Congratulations! You've completed our basic integration. You will now be able to
 PlayRM is currently operating in test mode. Be sure you switch to production mode, by clicking the button  in the integration validation tool window before deploying your game in an app store.
     
 
-Outline
-=======
+<div id="outline">
 * [Basic Integration](#basic-integration)
     * [Installing the SDK](#installing-the-sdk)
 * [Full Integration] (#full-integration)
@@ -95,7 +100,8 @@ Outline
     * [Dependencies](#dependencies)
     * [Disclaimers](#disclaimers)
     * [Assumptions](#assumptions)
-* [Support Issues](#support-issues)
+* [Contact Support](#contact-support)
+</div>
 
 ## Full Integration
 
@@ -574,8 +580,8 @@ This sample code is a very simple use-case; in reality, your game integration mi
 * We treat every player like a new player. In reality, **your game server should keep track of each player that joins your game and report attribution appropriately.**
 * The game store just has two items and everything is hard-coded. Yuck. We also share the store information with the client (JSON object dump) so that we can better understand the transaction taking place on the client side. Your implementation will likely be more data-driven, and should be more selective about what information is available to the web browser.
 
-Support Issues
-==============
+Contact Support
+===============
 
 If you have any questions or issues, please contact <a href="mailto:support@playnomics.com">support@playnomics.com</a>.
 
