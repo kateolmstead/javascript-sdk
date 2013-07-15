@@ -127,7 +127,9 @@ PlayRM is currently operating in test mode. Be sure you switch to production mod
 </ul>
 </li>
 <li><a href="#support-issues">Support Issues</a></li>
-</ul></div>
+</ul>
+</div>
+
 
 ## Full Integration
 
