@@ -80,28 +80,54 @@ PlayRM is currently operating in test mode. Be sure you switch to production mod
     
 
 <div id="outline">
-* [Basic Integration](#basic-integration)
-    * [Installing the SDK](#installing-the-sdk)
-* [Full Integration] (#full-integration)
-    * [Demographics and Install Attribution](#demographics-and-install-attribution)
-    * [Monetization](#monetization)
-        * [Purchases of In-Game Currency with Real Currency](#purchases-of-in-game-currency-with-real-currency)
-        * [Purchases of Items with Real Currency](#purchases-of-items-with-real-currency)
-        * [Purchases of Items with Premium Currency](#purchases-of-items-with-premium-currency)
-    * [Invitations and Virality](#invitations-and-virality)
-    * [Custom Event Tracking](#custom-event-tracking)
-    * [Validate Integration](#validate-integration)
-    * [Switch SDK to Production Mode](#switch-sdk-to-production-mode)
-* [Messaging Integration](#messaging-integration)
-    * [SDK Integration](#sdk-integration)
-    * [Enabling Code Callbacks](#enabling-code-callbacks)
-* [Sample Facebook App](#sample-facebook-app)
-    * [Getting Started](#getting-started)
-    * [Dependencies](#dependencies)
-    * [Disclaimers](#disclaimers)
-    * [Assumptions](#assumptions)
-* [Contact Support](#contact-support)
-</div>
+<ul>
+<li>
+<a href="#basic-integration">Basic Integration</a>
+
+<ul>
+<li><a href="#installing-the-sdk">Installing the SDK</a></li>
+</ul>
+</li>
+<li>
+<a href="#full-integration">Full Integration</a>
+
+<ul>
+<li><a href="#demographics-and-install-attribution">Demographics and Install Attribution</a></li>
+<li>
+<a href="#monetization">Monetization</a>
+
+<ul>
+<li><a href="#purchases-of-in-game-currency-with-real-currency">Purchases of In-Game Currency with Real Currency</a></li>
+<li><a href="#purchases-of-items-with-real-currency">Purchases of Items with Real Currency</a></li>
+<li><a href="#purchases-of-items-with-premium-currency">Purchases of Items with Premium Currency</a></li>
+</ul>
+</li>
+<li><a href="#invitations-and-virality">Invitations and Virality</a></li>
+<li><a href="#custom-event-tracking">Custom Event Tracking</a></li>
+<li><a href="#validate-integration">Validate Integration</a></li>
+<li><a href="#switch-sdk-to-production-mode">Switch SDK to Production Mode</a></li>
+</ul>
+</li>
+<li>
+<a href="#messaging-integration">Messaging Integration</a>
+
+<ul>
+<li><a href="#sdk-integration">SDK Integration</a></li>
+<li><a href="#enabling-code-callbacks">Enabling Code Callbacks</a></li>
+</ul>
+</li>
+<li>
+<a href="#sample-facebook-app">Sample Facebook App</a>
+
+<ul>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#dependencies">Dependencies</a></li>
+<li><a href="#disclaimers">Disclaimers</a></li>
+<li><a href="#assumptions">Assumptions</a></li>
+</ul>
+</li>
+<li><a href="#support-issues">Support Issues</a></li>
+</ul></div>
 
 ## Full Integration
 
