@@ -3,15 +3,15 @@ Playnomics PlayRM JavaScript SDK Integration Guide
 
 
 
-If you're new to PlayRM and/or don't have a PlayRM account and would like to get started using PlayRM please visit   <a href="https://controlpanel.playnomics.com/signup">https://controlpanel.playnomics.com/signup</a>   to sign up. Soon after creating an account you will receive a registration confirmation email permitting you access to your PlayRM control panel. Within the control panel, click the <strong>Applications</strong> tab and add your application. Upon doing so, you will recieve an <APPID> and an <API KEY>. These two components will enable you to begin the integration process.
+If you're new to PlayRM and/or don't have a PlayRM account and would like to get started using PlayRM please visit   <a href="https://controlpanel.playnomics.com/signup">https://controlpanel.playnomics.com/signup</a>   to sign up. Soon after creating an account you will receive a registration confirmation email permitting you access to your PlayRM control panel. Within the control panel, click the <strong>applications</strong> tab and add your application. Upon doing so, you will recieve an <strong>Application ID</strong> and an <strong>API KEY</strong>. These two components will enable you to begin the integration process.
 
-Our integration has been optimized to be as straight forward and user friendly as possible. If you're feeling unsure or would like better understand the order the process before beginning integration, please take a moment to check out the <a href="http://integration.playnomics.com/technical/#integration-getting-started">getting started</a> page. Here you can find an overview of our integration process, and platform specific features, to help better acquaint you with the PlayRM integration process.
+Our integration has been optimized to be as straight forward and user friendly as possible. If you're feeling unsure or would like better understand the order the process before beginning integration, please take a moment to check out the <a href="http://integration.playnomics.com/technical/#integration-getting-started">getting started</a> page. Here you can find an overview of our integration process, and platform specific features, to help you better understand the PlayRM integration process.
 
-One last thing... to help contextualize our integration, you can refer to our <strong>sample Facebook app</strong> located in this document. The easiest way to get there is to use the anchor link in the left navigation index. This example illustrates how you can integrate PlayRM with Facebook's PHP and JavaScript SDKs. You can view the <a href="https://apps.facebook.com/playnomicstest/" target="_blank">live example</a>. Keep in mind, the PlayRM Javascript SDK is not Facebook exclusive and will work in any Javascript game context.
+<strong>One last thing...!</strong> to help contextualize our integration, you can refer to our <strong>sample Facebook app</strong> located in this document. The easiest way to get there is to use the "Sample Facebook App" link in the left navigation index. This example illustrates how you can integrate PlayRM with Facebook's PHP and JavaScript SDKs. You can view the <a href="https://apps.facebook.com/playnomicstest/" target="_blank">live example</a>. Keep in mind, the PlayRM Javascript SDK is not Facebook exclusive and will work in any Javascript game context.
 
 
 
-## Basic Integration
+# Basic Integration
 The following code snippet asynchronously loads the SDK into your game canvas in **test mode** (be sure to switch to [production mode](#switch-sdk-to-production-mode) before deploying your application); it needs to be configured with your `<APPID>` from the dashboard, and it must provide a `<USER-ID>`. The `<USER-ID>` helps PlayRM consistently identify each player over their lifetime in a game.
 
 Once loaded, the SDK will automatically begin collecting basic user information (including geography) and engagement data, and send it to the PlayRM test servers.
@@ -80,14 +80,6 @@ PlayRM is currently operating in test mode. Be sure you switch to production mod
     
 
 <div class="outline">
-<ul>
-<li>
-<a href="#basic-integration">Basic Integration</a>
-
-<ul>
-<li><a href="#installing-the-sdk">Installing the SDK</a></li>
-</ul>
-</li>
 <li>
 <a href="#full-integration">Full Integration</a>
 
@@ -131,17 +123,29 @@ PlayRM is currently operating in test mode. Be sure you switch to production mod
 </div>
 
 
-## Full Integration
+# Full Integration
 
 If you're reading this it's likely that you've integrated our SDK and are interested in tailoring PlayRM to suit your particular segmentation needs.
 
-The index on the right provides a holistic overview of our process. From it, you can jump to specific points in this document depending on what you're looking to learn and do.
+The index on the right provides a holistic overview of the <strong>full</strong> integration process. From it, you can jump to specific points in this document depending on what you're looking to learn and do.
 
-To clarify where you are in the timeline of our integration process, you've completed our basic integration. Doing so will enable you to track engagement behaviors (having incorporated the Engagement Module) from the PlayRM dashboard. The following documentation will provides succint information on how to incorporate additional and more in-depth segmentation functionality.
+To clarify where you are in the timeline of our integration process, you've completed our basic integration. Doing so will enable you to track engagement behaviors from the PlayRM dashboard (having incorporated the Engagement Module). The following documentation will provides succint information on how to incorporate additional and more in-depth segmentation functionality by integrating any, or all of the following into your game:
+
+
+<ul>
+<li><strong>User Info Module:</strong> - provides basic user information</li>
+<li><strong>Monetization Module:</strong> - tracks various monetization events and transactions</li>
+<li><strong>Virality Module:</strong> - tracks the social activities of users</li>
+<li><strong>Milestone Module:</strong> - tracks significant player events customized to your game</li>
+</ul>
+
+
+Along with integration instructions for our various modules, you will also find integration information pertaining to messaging frame setup, push setup, as well as a sample facebook application with code examples to contextualize how you might incorporate our SDK. 
+
 
 ## Demographics and Install Attribution
 
-After the SDK is loaded, the user info module may be called to collect basic demographic and acquisition information. This data is used to segment users based on how/where they were acquired and enables improved targeting with basic demographics, in addition to the behavioral data collected using other events.
+After the SDK is loaded, the User Info Module may be called to collect basic demographic and acquisition information. This data is used to segment users based on how/where they were acquired and enables improved targeting with basic demographics, in addition to the behavioral data collected using other events.
 
 Provide each player's information using this call:
 
