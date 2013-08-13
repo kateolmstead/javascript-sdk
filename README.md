@@ -112,7 +112,7 @@ PlayRM is currently operating in test mode. Be sure you switch to [production mo
             <a href="#messaging-integration">Messaging Integration</a>
             <ul>
                 <li><a href="#sdk-integration">SDK Integration</a></li>
-                <li><a href="#enabling-code-callbacks">Enabling Code Callbacks</a></li>
+                <li><a href="#using-rich-code-callbacks">Using Rich Data Callbacks</a></li>
             </ul>
         </li>
         <li>
