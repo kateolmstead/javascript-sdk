@@ -45,10 +45,7 @@ The `<USER-ID>` should be a persistent, anonymized, and unique to each player. T
 
 ```php
 <?php
-
 //...
-//...
-
 $facebook = new Facebook(array(
     'appId'  => $config["fb"]["appId"],
     'secret' => $config["fb"]["secret"],
@@ -56,10 +53,7 @@ $facebook = new Facebook(array(
 
 // Get the current user
 $user_id = $facebook->getUser();
-
 //...
-//...
-
 $fb_user_profile = $facebook->api("/".$user_id."?fields=gender,third_party_id,birthday");
 $user_info["user_id"] = $fb_user_profile["third_party_id"];
 ```
@@ -76,56 +70,62 @@ _pnConfig.userId="<?echo $user_info["user_id"]?>";
 
 **You cannot use the player's Facebook ID or any personally identifiable information (plain-text email, name, etc) for the `<USER-ID>`.**
 
-`_pnConfig.onLoadComplete` allows you to optionally pass a callback that will be fired when the SDK has finished initialization. This a common place to call the [user info module](#demographics-and-install-attribution).
+`_pnConfig.onLoadComplete` allows you to optionally pass a callback that will be fired when the SDK has finished initialization.This a common place to call the [user info module](#demographics-and-install-attribution).
 
 
 Congratulations! You've completed our basic integration. You will now be able to track engagement behaviors (having incorporated the Engagement Module) from the PlayRM dashboard. At this point we recomend that you use our integration validation tool to test your integration of our SDK in order insure that it has been properly incorporated in your game. 
 
 
-PlayRM is currently operating in test mode. Be sure you switch to [production mode](#switch-sdk-to-production-mode), by implementing the code call outlined in our Basic Integration before deploying your game on the web or in an app store.
-    
+PlayRM is currently operating in test mode. Be sure you switch to [production mode](#switch-sdk-to-production-mode), by implementing the code call outlined in our Basic Integration before deployingyour game on the web or in an app store.
 
 # Full Integration
 
-
-
 <div class="outline">
-<li>
-<a href="#full-integration">Full Integration</a>
-<ul>
-<li><a href="#demographics-and-install-attribution">Demographics and Install Attribution</a></li>
-<li>
-<a href="#monetization">Monetization</a>
-<ul>
-<li><a href="#purchases-of-in-game-currency-with-real-currency">Purchases of In-Game Currency with Real Currency</a></li>
-<li><a href="#purchases-of-items-with-real-currency">Purchases of Items with Real Currency</a></li>
-<li><a href="#purchases-of-items-with-premium-currency">Purchases of Items with Premium Currency</a></li>
-</ul>
-</li>
-<li><a href="#invitations-and-virality">Invitations and Virality</a></li>
-<li><a href="#custom-event-tracking">Custom Event Tracking</a></li>
-<li><a href="#validate-integration">Validate Integration</a></li>
-<li><a href="#switch-sdk-to-production-mode">Switch SDK to Production Mode</a></li>
-</ul>
-</li>
-<li>
-<a href="#messaging-integration">Messaging Integration</a>
-<ul>
-<li><a href="#sdk-integration">SDK Integration</a></li>
-<li><a href="#enabling-code-callbacks">Enabling Code Callbacks</a></li>
-</ul>
-</li>
-<li>
-<a href="#sample-facebook-app">Sample Facebook App</a>
-<ul>
-<li><a href="#getting-started">Getting Started</a></li>
-<li><a href="#dependencies">Dependencies</a></li>
-<li><a href="#disclaimers">Disclaimers</a></li>
-<li><a href="#assumptions">Assumptions</a></li>
-</ul>
-</li>
-<li><a href="#support-issues">Support Issues</a></li>
-</ul>
+    <ul>
+        <li>
+            <a href="#full-integration">Full Integration</a>
+            <ul>
+                <li><a href="#demographics-and-install-attribution">Demographics and Install Attribution</a></li>
+                <li>
+                    <a href="#monetization">Monetization</a>
+                    <ul>
+                        <li>
+                            <a href="#purchases-of-in-game-currency-with-real-currency">Purchases of In-Game Currency with Real Currency</a>
+                        </li>
+                        <li>
+                            <a href="#purchases-of-items-with-real-currency">Purchases of Items with Real Currency</a>
+                        </li>
+                        <li>
+                            <a href="#purchases-of-items-with-premium-currency">Purchases of Items with Premium Currency</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#invitations-and-virality">Invitations and Virality</a>
+                </li>
+                <li><a href="#custom-event-tracking">Custom Event Tracking</a></li>
+                <li><a href="#validate-integration">Validate Integration</a></li>
+                <li><a href="#switch-sdk-to-production-mode">Switch SDK to Production Mode</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#messaging-integration">Messaging Integration</a>
+            <ul>
+                <li><a href="#sdk-integration">SDK Integration</a></li>
+                <li><a href="#enabling-code-callbacks">Enabling Code Callbacks</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#sample-facebook-app">Sample Facebook App</a>
+            <ul>
+                <li><a href="#getting-started">Getting Started</a></li>
+                <li><a href="#dependencies">Dependencies</a></li>
+                <li><a href="#disclaimers">Disclaimers</a></li>
+                <li><a href="#assumptions">Assumptions</a></li>
+            </ul>
+        </li>
+        <li><a href="#support-issues">Support Issues</a></li>
+    </ul>
 </div>
 
 
@@ -135,20 +135,12 @@ The index on the right provides a holistic overview of the <strong>full integrat
 
 To clarify where you are in the timeline of our integration process, you've completed our basic integration. Doing so will enable you to track engagement behaviors from the PlayRM dashboard (having incorporated the Engagement Module). The following documentation will provides succint information on how to incorporate additional and more in-depth segmentation functionality by integrating any, or all of the following into your game:
 
-
 <ul>
-<li><strong>User Info Module:</strong> - provides basic user information</li>
-
-
-<li><strong>Monetization Module:</strong> - tracks various monetization events and transactions</li>
-
-
-<li><strong>Virality Module:</strong> - tracks the social activities of users</li>
-
-
-<li><strong>Milestone Module:</strong> - tracks significant player events customized to your game</li>
+    <li><strong>User Info Module:</strong> - provides basic user information</li>
+    <li><strong>Monetization Module:</strong> - tracks various monetization events and transactions</li>
+    <li><strong>Virality Module:</strong> - tracks the social activities of users</li>
+    <li><strong>Milestone Module:</strong> - tracks significant player events customized to your game</li>
 </ul>
-
 
 Along with integration instructions for our various modules, you will also find integration information pertaining to messaging frame setup, as well as a sample facebook application with code examples to contextualize how you might incorporate our SDK. 
 
@@ -390,7 +382,7 @@ pnInvitationSent(invitationId, recipientUserId, recipientAddress, method);
     <tr>
         <td><code>invitationId</code></td>
         <td>
-            A unique 64-bit integer identifier for this invitation. 
+            A unique 64-bit integer identifier for this invitation
 
             If this is a Facebook application, you can use the appRequestId.
 
@@ -545,12 +537,11 @@ _pnConfig["b0_frameId"] = "<PLAYRM-FRAME-ID>";
 _pnConfig["b0_width"] = "760";
 _pnConfig["b0_height"] = "90";
 
-_pnConfig.enableAdJS=true;
 
 _pnConfig.userId = "<USER-ID>";
 _pnConfig.onLoadComplete = PlaynomicsSample.onLoadComplete;
 
-var _pnAPIURL=document.location.protocol+"//js.a.playnomics.net/v1/api?a=<APPID>",
+var _pnAPIURL=document.location.protocol+"//js.b.playnomics.net/v1/api?a=<APPID>",
 _pnAPI=document.createElement("script");
 _pnAPI.type="text/javascript";
 _pnAPI.async=true;_pnAPI.src=_pnAPIURL;document.body.appendChild(_pnAPI);
@@ -560,7 +551,7 @@ After the SDK has initialized, PlayRM will automatically find the `<div>` tag an
 
 Note: This means that the `<div>` tag must exist in the HTML DOM when the SDK initialized.  To achieve greater control over when the frame appears, you could dynamically control its visibility using CSS property as show in this example:
 
-```
+```html
 <div style="display:none" id="GameEndInScreen">
    <div id="GameEndInScreenFrame"></div>
 </div>
@@ -568,23 +559,121 @@ Note: This means that the `<div>` tag must exist in the HTML DOM when the SDK in
 </body></html>
 ```
 
-### Enabling Code Callbacks
-Code Callbacks is a feature that allows you to target JavaScript code in your game canvas from a message. You can think of this as a dynamic click callback, because the JavaScript to be executed when the player clicks is entirely via the Playnomics control panel. You must, however, explicitly enable this feature in your integration.
+### Using Rich Data Callbacks
+Rich Data is a JSON message that you associate with your message creative. When the player presses the message, the PlayRM SDK bubbles-up the associated JSON object to a function that you assign to your frame.
 
-To enable any JavaScript function, add the setting:
-
-```javascript
-_pnConfig.enableAdJS=true;
-```
-
-To enable a specific set of JavaScript functions, add the following setting for EACH function that may be triggered:
+You attach a function to the frame to process JSON data related to a frame. 
 
 ```javascript
-_pnConfig.adJS_<NAME>="<JS-FUNCTION>";
-```
-Replace `<NAME>` with any name. This name will be provided in the Playnomics control panel when creating a messaging creative.
+_pnConfig["b0_barDivId"] ="messageDiv";
+_pnConfig["b0_frameId"] = "<PLAYRM-FRAME-ID>";
+_pnConfig["b0_width"] = "760";
+_pnConfig["b0_height"] = "90";
 
-Replace `<JS-FUNCTION>` with the JavaScript function to be triggered when the player clicks the message.
+_pnConfig["b0_onClick"] = function(data){
+    //data is a deserialized JSON object, most likely an associative array
+}
+```
+
+The actual contents of your message can be delayed until the time of the messaging campaign configuration. However, the structure of your message needs to be decided before you can process it in your game.
+
+In this example, the message shown to the player changes based on the desired segments:
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                Segment
+            </th>
+            <th>
+                Priority
+            </th>
+            <th>
+                Code Callback
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                At-Risk
+            </td>
+            <td>1st</td>
+            <td>
+                In this case, we're worried once-active players are now in danger of leaving the game. We might offer them <strong>50 MonsterBucks</strong> to bring them back.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Lapsed 7 or more days
+            </td>
+            <td>2nd</td>
+            <td>
+                In this case, we want to thank the player for coming back and incentivize these lapsed players to continue doing so. We might offer them <strong>10 MonsterBucks</strong> to increase their engagement and loyalty.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Default - players who don't fall into either segment.
+            </td>
+            <td>3rd</td>
+            <td>
+                In this case, we can offer a special item to them for returning to the grame.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+```javascript
+_pnConfig["b0_onClick"] = function(data){
+    if(data.type && data.type === "award"){
+        if(data.award){
+            var item = data.award.item;
+            var quantity = data.award.quantity;
+
+            Inventory.addItem(item, quantity);
+        }
+    }
+}
+```
+
+The related messages would be configured in the Control Panel to use this callback by placing this in the **Target Data** for each message:
+
+Grant 10 Monster Bucks
+```json
+{
+    "type" : "award",
+    "award" : 
+    {
+        "item" : "MonsterBucks",
+        "quantity" : 10
+    }
+}
+```
+
+Grant 50 Monster Bucks
+```json
+{
+    "type" : "award",
+    "award" : 
+    {
+        "item" : "MonsterBucks",
+        "quantity" : 50
+    }
+}
+```
+
+Grant Bazooka
+```json
+{
+    "type" : "award",
+    "award" :
+    {
+        "item" : "Bazooka",
+        "quantity" : 1
+    }
+}
+```
 
 Sample Facebook App
 ===================
