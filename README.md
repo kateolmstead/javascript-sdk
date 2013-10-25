@@ -1,24 +1,23 @@
 Playnomics PlayRM JavaScript SDK Integration Guide
 ==================================================
-If you're new to PlayRM and/or don't have a PlayRM account and would like to get started using PlayRM please visit   <a href="https://controlpanel.playnomics.com/signup">https://controlpanel.playnomics.com/signup</a>   to sign up. Soon after creating an account you will receive a registration confirmation email permitting you access to your PlayRM control panel.
+If you're new to PlayRM and/or don't have a PlayRM account and would like to get started using PlayRM please visit   <a href="https://controlpanel.playnomics.com/signup">https://controlpanel.playnomics.com/signup</a> to sign up. Soon after creating an account you will receive a registration confirmation email permitting you access to your PlayRM control panel.
 
-Within the control panel, click the <strong>applications</strong> tab and add your game. Upon doing so, you will recieve an <strong>Application ID</strong> and an <strong>API KEY</strong>. These two components will enable you to begin the integration process.
+Within the control panel, click the <strong>applications</strong> tab and add your app. Upon doing so, you will receive an <strong>Application ID</strong> and an <strong>API KEY</strong>. These two components will enable you to begin the integration process.
 
 Our integration has been optimized to be as straight forward and user friendly as possible. If you're feeling unsure or would like better understand the order the process before beginning integration, please take a moment to check out the <a href="http://integration.playnomics.com/technical/#integration-getting-started">getting started</a> page. Here you can find an overview of our integration process, and platform specific features, to help you better understand the PlayRM integration process.
 
-To help contextualize our integration, you can refer to our <strong>sample Facebook app</strong> located in this document. The easiest way to get there is to use the "Sample Facebook App" link in the left navigation index. This example illustrates how you can integrate PlayRM with Facebook's PHP and JavaScript SDKs. You can view the <a href="https://apps.facebook.com/playnomicstest/" target="_blank">live example</a>. Keep in mind, the PlayRM Javascript SDK is not Facebook exclusive and will work in any Javascript game context.
+To help contextualize our integration, you can refer to our <strong>sample Facebook app</strong> located in this document. The easiest way to get there is to use the "Sample Facebook App" link in the left navigation index. This example illustrates how you can integrate PlayRM with Facebook's PHP and JavaScript SDKs. You can view the <a href="https://apps.facebook.com/playnomicstest/" target="_blank">live example</a>. Keep in mind, the PlayRM Javascript SDK is not Facebook exclusive and will work in any Javascript application context.
 
 
-## Considerations for Cross-Platform Games
+## Considerations for Cross-Platform Applications
 
-If you want to deploy your game to multiple platforms (eg: JavaScript for Facebook and the Unity Web player), you'll need to create separate applications in the control panel. Each application must incorporate a separate `<APPID>` particular to that application. In addition, placements and their respective creative uploads will be particular to that app in order to ensure that they are sized appropriately - proportionate to your game screen size.
-
+If you want to deploy your app to multiple platforms (eg: JavaScript for Facebook and the Unity Web player), you'll need to create separate applications in the control panel. Each application must incorporate a separate `<APPID>` particular to that application. In addition, placements and their respective creative uploads will be particular to that app in order to ensure that they are sized appropriately - proportionate to your app screen size.
 
 
 # Basic Integration
-Integration is as simple as adding the code snippet below into your game. Upon initial integration, the SDK will be running in **test mode**. Be sure to switch to [production mode](#switch-sdk-to-production-mode) before deploying your application.
+Integration is as simple as adding the code snippet below into your application. Upon initial integration, the SDK will be running in **test mode**. Be sure to switch to [production mode](#switch-sdk-to-production-mode) before deploying your app.
 
- This code needs to incorporate your `<APPID>`, found on your control panel, and it must provide a `<USER-ID>`. The `<USER-ID>` helps PlayRM consistently identify each player over his or her lifetime in a game.
+ This code needs to incorporate your `<APPID>`, found on your control panel, and it must provide a `<USER-ID>`. The `<USER-ID>` helps PlayRM consistently identify each user over his or her lifetime in an application.
 
 Once loaded, the SDK will automatically begin collecting basic user information (including geography) and engagement data, and send it to the PlayRM test servers.
 
@@ -39,9 +38,9 @@ _pnAPI.type="text/javascript";_pnAPI.async=true;_pnAPI.src=_pnAPIURL;document.bo
 <!-- End Playnomics API -->
 ```
 
-The `<USER-ID>` should be a persistent, anonymized, and unique to each player. This is typically discerned dynamically when a player starts the game. Some potential implementations:
+The `<USER-ID>` should be a persistent, anonymized, and unique to each user. This is typically discerned dynamically when a user starts the application. Some potential implementations:
 
-* If your game is a Facebook canvas game, select the player's Third Party ID. The sample application demonstrates how you can do this:
+* If your app is a Facebook canvas application, select the user’s Third Party ID. The sample application demonstrates how you can do this:
 
 ```php
 <?php
@@ -66,17 +65,17 @@ _pnConfig.userId="<?echo $user_info["user_id"]?>";
 ```
 
 * An internal ID (such as a database auto-generated number).
-* A hash of the player's email address.
+* A hash of the user’s email address.
 
-**You cannot use the player's Facebook ID or any personally identifiable information (plain-text email, name, etc) for the `<USER-ID>`.**
+**You cannot use the user’s Facebook ID or any personally identifiable information (plain-text email, name, etc) for the `<USER-ID>`.**
 
-`_pnConfig.onLoadComplete` allows you to optionally pass a callback that will be fired when the SDK has finished initialization.This a common place to call the [user info module](#demographics-and-install-attribution).
-
-
-Congratulations! You've completed our basic integration. You will now be able to track engagement behaviors (having incorporated the Engagement Module) from the PlayRM dashboard. At this point we recommend that you use our integration validation tool to test your integration of our SDK in order insure that it has been properly incorporated in your game. 
+`_pnConfig.onLoadComplete` allows you to optionally pass a callback that will be fired when the SDK has finished initialization. This a common place to call the [user info module](#demographics-and-install-attribution).
 
 
-PlayRM is currently operating in test mode. Be sure you switch to [production mode](#switch-sdk-to-production-mode), by implementing the code call outlined in our Basic Integration before deploying your game on the web or in an app store.
+Congratulations! You've completed our basic integration. You will now be able to track engagement behaviors (having incorporated the Engagement Module) from the PlayRM dashboard. At this point we recommend that you use our integration validation tool to test your integration of our SDK in order insure that it has been properly incorporated in your app. 
+
+
+PlayRM is currently operating in test mode. Be sure you switch to [production mode](#switch-sdk-to-production-mode), by implementing the code call outlined in our Basic Integration before deploying your app in the web or in an app store.
 
 # Full Integration
 
@@ -90,7 +89,7 @@ PlayRM is currently operating in test mode. Be sure you switch to [production mo
                     <a href="#monetization">Monetization</a>
                     <ul>
                         <li>
-                            <a href="#purchases-of-in-game-currency-with-real-currency">Purchases of In-Game Currency with Real Currency</a>
+                            <a href="#purchases-of-in-app-currency-with-real-currency">Purchases of In-App Currency with Real Currency</a>
                         </li>
                         <li>
                             <a href="#purchases-of-items-with-real-currency">Purchases of Items with Real Currency</a>
@@ -130,12 +129,12 @@ If you're reading this it's likely that you've integrated our SDK and are intere
 
 The index on the right provides a holistic overview of the <strong>full integration</strong> process. From it, you can jump to specific points in this document depending on what you're looking to learn and do.
 
-To clarify where you are in the timeline of our integration process, you've completed our basic integration. Doing so will enable you to track engagement behaviors from the PlayRM dashboard (having incorporated the Engagement Module). The following documentation provides succinct information on how to incorporate additional and more in-depth segmentation functionality by integrating any, or all of the following into your game:
+To clarify where you are in the timeline of our integration process, you've completed our basic integration. Doing so will enable you to track engagement behaviors from the PlayRM dashboard (having incorporated the Engagement Module). The following documentation provides succinct information on how to incorporate additional and more in-depth segmentation functionality by integrating any, or all of the following into your application:
 
 <ul>
     <li><strong>User Info Module:</strong> - provides basic user information</li>
     <li><strong>Monetization Module:</strong> - tracks various monetization events and transactions</li>
-   <li><strong>Custom Events Module:</strong> - tracks significant player events customized to your game</li>
+   <li><strong>Custom Events Module:</strong> - tracks significant user events customized to your app</li>
 </ul>
 
 Along with integration instructions for our various modules, you will also find integration information pertaining to messaging frame setup, as well as a sample Facebook application with code examples to contextualize how you might incorporate our SDK. 
@@ -145,7 +144,7 @@ Along with integration instructions for our various modules, you will also find 
 
 After the SDK is loaded, the User Info Module may be called to collect basic demographic and acquisition information. This data is used to segment users based on how/where they were acquired and enables improved targeting with basic demographics, in addition to the behavioral data collected using other events.
 
-Provide each player's information using this call:
+Provide each user’s information using this call:
 
 ```javascript
 pnUserInfo("update", null, null, sex, birthYear, source, sourceCampaign, installTime, sourceUser);
@@ -163,7 +162,7 @@ If any of the parameters are not available, you should pass `null`.
     <tr>
         <td><code>source</code></td>
         <td>
-            Source of the player, such as "FacebookAds", "UserReferral", "Playnomics", etc. These are only suggestions, any 16-character or shorter string is acceptable
+            Source of the user, such as "FacebookAds", "UserReferral", "Playnomics", etc. These are only suggestions; any 16-character or shorter string is acceptable
         </td>
     </tr>
     <tr>
@@ -173,13 +172,13 @@ If any of the parameters are not available, you should pass `null`.
     <tr>
         <td><code>sourceUser</code></td>
         <td>
-            If the player was acquired via a UserReferral (i.e., a viral message), the userId of the person who initially brought this user into the game.
+            If the user was acquired via a UserReferral (i.e., a viral message), the userId of the person who initially brought this user into the app.
         </td>
     </tr>
     <tr>
         <td><code>installTime</code></td>
         <td>
-            Unix epoch time in seconds when the player originally installed the game.
+            Unix epoch time in seconds when the user originally installed the app.
         </td>
     </tr>
 </table>
@@ -188,14 +187,14 @@ You can extract a lot of this information from the Facebook PHP SDK, particularl
 
 ## Monetization
 
-PlayRM provides a flexible interface for tracking monetization events. This module should be called every time a player triggers a monetization event. 
+PlayRM provides a flexible interface for tracking monetization events. This module should be called every time a user triggers a monetization event. 
 
-This event tracks players that have monetized and the amount they have spent in total, *real* currency:
+This event tracks users that have monetized and the amount they have spent in total, *real* currency:
 * FBC (Facebook Credits)
 * USD (US Dollars)
 * OFD (offer valued in USD)
 
-or an in-game, *virtual* currency.
+or an in-app, *virtual* currency.
 
 ```javascript
 pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes, 
@@ -219,37 +218,37 @@ pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes,
         <td>
             The type of transaction occurring:
             <ul>
-                <li>BuyItem: A purchase of virtual item. The <code>quantity</code> is added to the player's inventory</li>
+                <li>BuyItem: A purchase of virtual item. The <code>quantity</code> is added to the user’s inventory</li>
                 <li>
-                    SellItem: A sale of a virtual item to another player. The item is removed from the player's inventory. Note: a sale of an item will result in two events with the same <code>transactionId</code>, one for the sale with type SellItem, and one for the receipt of that sale, with type BuyItem
+                    SellItem: A sale of a virtual item to another user. The item is removed from the user’s inventory. Note: a sale of an item will result in two events with the same <code>transactionId</code>, one for the sale with type SellItem, and one for the receipt of that sale, with type BuyItem
                 </li>
                 <li>
-                    ReturnItem: A return of a virtual item to the store. The item is removed from the player's inventory
+                    ReturnItem: A return of a virtual item to the store. The item is removed from the user’s inventory
                 </li>
                 <li>BuyService: A purchase of a service, e.g., VIP membership </li>
-                <li>SellService: The sale of a service to another player</li>
+                <li>SellService: The sale of a service to another user</li>
                 <li>ReturnService: The return of a service</li>
                 <li>
-                    CurrencyConvert: An conversion of currency from one form to another, usually in the form of real currency (e.g., US dollars) to virtual currency.  If the type of a transaction is CurrencyConvert, then there should be at least 2 elements in the <code>currencyTypes</code>, <code>currencyValues</code>, and <code>currencyCategoriess</code> arrays.
+                    CurrencyConvert: A conversion of currency from one form to another, usually in the form of real currency (e.g., US dollars) to virtual currency.  If the type of a transaction is CurrencyConvert, then there should be at least 2 elements in the <code>currencyTypes</code>, <code>currencyValues</code>, and <code>currencyCategoriess</code> arrays.
                 </li>
-                <li>Initial: An initial allocation of currency and/or virtual items to a new player</li>
-                <li>Free: Free currency or item given to a player by the application</li>
+                <li>Initial: An initial allocation of currency and/or virtual items to a new user</li>
+                <li>Free: Free currency or item given to a user by the application</li>
                 <li>
-                    Reward: Currency or virtual item given by the application as a reward for some action by the player
+                    Reward: Currency or virtual item given by the application as a reward for some action by the user
                 </li>
                 <li>
-                   GiftSend: A virtual item sent from one player to another.
+                   GiftSend: A virtual item sent from one user to another.
 
                    Note: a virtual gift should result in two transaction events with the same <code>transactionId</code>, one with the type GiftSend, and another with the type GiftReceive
                 </li>
-                <li>GiftReceive: A virtual good received by a player. See note for GiftSend type</li>
+                <li>GiftReceive: A virtual good received by a user. See note for GiftSend type</li>
             </ul>
         </td>
     </tr>
     <tr>
         <td><code>otherUserId</code></td>
         <td>
-            If applicable, the other player involved in the transaction. A contextual example is a player sending a gift to another player.
+            If applicable, the other user involved in the transaction. A contextual example is a user sending a gift to another user.
         </td>
     </tr>
     <tr>
@@ -265,7 +264,7 @@ pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes,
                     </ul>
                 </li>
                 <li>
-                    A <em>virtual</em> game currency, limited to 16 characters.
+                    A <em>virtual</em> app currency, limited to 16 characters.
                 </li>
             </ul>
         </td>
@@ -285,18 +284,18 @@ pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes,
 </table>
 
 We highlight three common use-cases below. The Sample App covers the first two.
-* [Purchases of In-Game Currency with Real Currency](#purchases-of-in-game-currency-with-real-currency)
+* [Purchases of In-App Currency with Real Currency](#purchases-of-in-app-currency-with-real-currency)
 * [Purchases of Items with Real Currency](#purchases-of-items-with-real-currency)
-* [Purchases of Items with In-Game Currency](#purchases-of-items-with-in-game-currency)
+* [Purchases of Items with In-App Currency](#purchases-of-items-with-in-app-currency)
 
-### Purchases of In-Game Currency with Real Currency
+### Purchases of In-App Currency with Real Currency
 
-A very common monetization strategy is to incentivize players to purchase premium, in-game currency with real currency. PlayRM treats this like a currency exchange. This is one of the few cases where currency metadata: `currencyTypes`, `currencyValues`, `currencyCategories` are expressed in an array form. `itemId`, `quantity`, and `otherUserId` are left `null`.
+A very common monetization strategy is to incentivize users to purchase premium, in-app currency with real currency. PlayRM treats this like a currency exchange. This is one of the few cases where currency metadata: `currencyTypes`, `currencyValues`, `currencyCategories` are expressed in an array form. `itemId`, `quantity`, and `otherUserId` are left `null`.
 
 An example of this working in concert with Facebook's Payments Dialog is provided in the Sample App, however, here is a more simplified example:
 
 ```javascript
-//player purchases 500 MonsterBucks for 10 USD
+//user purchases 500 MonsterBucks for 10 USD
 
 var quantityBucks = 500;
 var gameCurrency = "MonsterBucks";
@@ -304,7 +303,7 @@ var gameCurrency = "MonsterBucks";
 var priceInUSD = 10;
 var transType = "CurrencyConvert";
 
-//it's important that cooresponding currency metadata is consistently positioned in each array
+//it's important that corresponding currency metadata is consistently positioned in each array
 pnTransaction(transactionId, null, null, transType, null, [gameCurrency, "USD"], [quantityBucks, priceInUSD * -1],  ["v", "r"]);
 ```
 
@@ -313,7 +312,7 @@ pnTransaction(transactionId, null, null, transType, null, [gameCurrency, "USD"],
 An example of this working in concert with Facebook's Payments Dialog is provided in the Sample App, however, here is a more simplified example:
 
 ```javascript
-//player purchases a "Monster Trap" for $.99 USD
+//user purchases a "Monster Trap" for $.99 USD
 var trapItemId = "Monster Trap"
 var quantity = 1;
 var price = .99;
@@ -324,18 +323,18 @@ pnTransaction(tranId, trapItemId, quantity, transType, null, "USD", price, "r");
 
 ### Purchases of Items with Premium Currency
 
-This event is used to segment monetized players (and potential future monetizers) by collecting information about how and when they spend their premium currency (an in-game currency that is primarily acquired using a *real* currency). This is one level of information deeper than the previous use-cases.
+This event is used to segment monetized users (and potential future monetizers) by collecting information about how and when they spend their premium currency (an in-app currency that is primarily acquired using a *real* currency). This is one level of information deeper than the previous use-cases.
 
 #### Currency Exchanges
 
-This is a continuation on the first currency exchange example. It showcases how to track each purchase of in-game *attention* currency (non-premium virtual currency) paid for with a *premium*:
+This is a continuation on the first currency exchange example. It showcases how to track each purchase of in-app *attention* currency (non-premium virtual currency) paid for with a *premium*:
 
 ```javascript
 
-//In this hypothetical, Mana is an attention currency that is earned over the lifetime of the game. 
-//They can also be purchased with the premium MonsterBucks that the player may have purchased earlier.
+//In this hypothetical, Mana is an attention currency that is earned over the lifetime of the app. 
+//They can also be purchased with the premium MonsterBucks that the user may have purchased earlier.
 
-//player buys 100 Mana with 10 MonsterBucks
+//user buys 100 Mana with 10 MonsterBucks
 var attentionCurrency = "Mana";
 var attentionAmount = 100;
 
@@ -352,7 +351,7 @@ pnTransaction(transactionId, null, null, transType, null, [premimumCurrency, att
 This is a continuation on the first item purchase example, except with premium currency.
 
 ```javascript
-//player buys 20 light armor, for 5 MonsterBucks
+//user buys 20 light armor, for 5 MonsterBucks
 
 var itemQuantity = 20;
 var item = "Light Armor";
@@ -367,9 +366,9 @@ pnTransaction(transactionId, item, itemQuantity, transType, null, premimumCurren
 
 ## Custom Event Tracking
 
-Custom Events may be used in a number of ways.  They can be used to track certain key gameplay events such as finishing a tutorial or receiving a high score. They may also be used to track other important lifecycle events such as level up, zone unlocked, etc.  PlayRM, by default, supports up to five custom events.  You can then use these custom events to create more targeted custom segments.
+Custom Events may be used in a number of ways.  They can be used to track certain key in-app events such as finishing a tutorial or receiving a high score. They may also be used to track other important lifecycle events such as level up, zone unlocked, etc.  PlayRM, by default, supports up to five custom events.  You can then use these custom events to create more targeted custom segments.
 
-Each time a player completes a certain event, track it with this call:
+Each time a user completes a certain event, track it with this call:
 
 ```javascript
 pnMilestone(milestoneId, milestoneName);
@@ -390,7 +389,7 @@ These parameters should be replaced:
     </tr>
 </table>
 
-Example client-side calls for a player's reaching a custom event, with generated IDs:
+Example client-side calls for a user reaching a custom event, with generated IDs:
 
 ```javascript
 function generateLargeId(){
@@ -408,7 +407,7 @@ After configuring your selected PlayRM modules, you should verify your applicati
 
 Simply visit the self-check page for your application: **`https://controlpanel.playnomics.com/applications/<APPID>`**
 
-You can now  see the most recent event data sent by the SDK, with any errors flagged. Visit the  <a href="http://integration.playnomics.com/technical/#self-check">self-check validation guide</a> for more information.
+You can now see the most recent event data sent by the SDK, with any errors flagged. Visit the  <a href="http://integration.playnomics.com/technical/#self-check">self-check validation guide</a> for more information.
 
 We strongly recommend running the self-check validator before deploying your newly integrated application to production.
 
@@ -449,10 +448,10 @@ To tell PlayRM where to place the placement, you first create an empty `div` ele
 Then modify the PlayRM SDK config `_pnConfig` to let PlayRM know about your placement:
 
 ```javascript
-//this frame is specific to this sample game only
+//this frame is specific to this sample app only
 _pnConfig["b0_barDivId"] ="messageDiv";
 _pnConfig["b0_frameId"] = "<PLAYRM-FRAME-ID>";
-//the height and width of your frame are configuarable and based
+//the height and width of your frame are configurable and based
 //on what you set up in the control panel
 _pnConfig["b0_width"] = "760";
 _pnConfig["b0_height"] = "90";
@@ -480,7 +479,7 @@ Note: This means that the `<div>` tag must exist in the HTML DOM when the SDK in
 ```
 
 ### Using Rich Data Callbacks
-Rich Data is a JSON message that you associate with your message creative. When the player presses the message, the PlayRM SDK bubbles-up the associated JSON object to a function that you assign to your frame.
+Rich Data is a JSON message that you associate with your message creative. When the user presses the message, the PlayRM SDK bubbles-up the associated JSON object to a function that you assign to your frame.
 
 You attach a function to the placement to process JSON data related to a placement. 
 
@@ -495,9 +494,9 @@ _pnConfig["b0_onClick"] = function(data){
 }
 ```
 
-The actual contents of your message can be delayed until the time of the messaging campaign configuration. However, the structure of your message needs to be decided before you can process it in your game.
+The actual contents of your message can be delayed until the time of the messaging campaign configuration. However, the structure of your message needs to be decided before you can process it in your application.
 
-In this example, the message shown to the player changes based on the desired segments:
+In this example, the message shown to the user changes based on the desired segments:
 
 <table>
     <thead>
@@ -520,7 +519,7 @@ In this example, the message shown to the player changes based on the desired se
             </td>
             <td>1st</td>
             <td>
-                In this case, we're worried once-active players are now in danger of leaving the game. We might offer them <strong>50 MonsterBucks</strong> to bring them back.
+                In this case, we're worried once-active users are now in danger of leaving the app. We might offer them <strong>50 MonsterBucks</strong> to bring them back.
             </td>
         </tr>
         <tr>
@@ -529,16 +528,16 @@ In this example, the message shown to the player changes based on the desired se
             </td>
             <td>2nd</td>
             <td>
-                In this case, we want to thank the player for coming back and incentivize these lapsed players to continue doing so. We might offer them <strong>10 MonsterBucks</strong> to increase their engagement and loyalty.
+                In this case, we want to thank the user for coming back and incentivize these lapsed users to continue doing so. We might offer them <strong>10 MonsterBucks</strong> to increase their engagement and loyalty.
             </td>
         </tr>
         <tr>
             <td>
-                Default - players who don't fall into either segment.
+                Default - users who don't fall into either segment.
             </td>
             <td>3rd</td>
             <td>
-                In this case, we can offer a special item to them for returning to the grame.
+                In this case, we can offer a special item to them for returning to the app.
             </td>
         </tr>
     </tbody>
@@ -624,12 +623,12 @@ While jQuery and Twitter Bootstrap are both used, they aren't necessary for work
 
 ## Disclaimers
 
-This sample code is a very simple use-case; in reality, your game integration might work a lot differently. Again, the goal of this sample app is to convey how you can integrate some of the major features of Facebook's SDKs with the PlayRM JavaScript SDK.
+This sample code is a very simple use-case; in reality, your application integration might work a lot differently. Again, the goal of this sample app is to convey how you can integrate some of the major features of Facebook's SDKs with the PlayRM JavaScript SDK.
 
 ## Assumptions
 
-* We treat every player like a new player. In reality, **your game server should keep track of each player that joins your game and report attribution appropriately.**
-* The game store just has two items and everything is hard-coded. Yuck. We also share the store information with the client (JSON object dump) so that we can better understand the transaction that is taking place on the client side. Your implementation will likely be more data-driven, and should be more selective about what information is available to the web browser.
+* We treat every user like a new user. In reality, **your app server should keep track of each user that joins your application and report attribution appropriately.**
+* The app store just has two items and everything is hard-coded. Yuck. We also share the store information with the client (JSON object dump) so that we can better understand the transaction that is taking place on the client side. Your implementation will likely be more data-driven, and should be more selective about what information is available to the web browser.
 
 Contact Support
 ===============
