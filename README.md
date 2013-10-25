@@ -6,19 +6,19 @@ Within the control panel, click the <strong>applications</strong> tab and add yo
 
 Our integration has been optimized to be as straight forward and user friendly as possible. If you're feeling unsure or would like better understand the order the process before beginning integration, please take a moment to check out the <a href="http://integration.playnomics.com/technical/#integration-getting-started">getting started</a> page. Here you can find an overview of our integration process, and platform specific features, to help you better understand the PlayRM integration process.
 
-One last thing... to help contextualize our integration, you can refer to our <strong>sample Facebook app</strong> located in this document. The easiest way to get there is to use the "Sample Facebook App" link in the left navigation index. This example illustrates how you can integrate PlayRM with Facebook's PHP and JavaScript SDKs. You can view the <a href="https://apps.facebook.com/playnomicstest/" target="_blank">live example</a>. Keep in mind, the PlayRM Javascript SDK is not Facebook exclusive and will work in any Javascript game context.
+To help contextualize our integration, you can refer to our <strong>sample Facebook app</strong> located in this document. The easiest way to get there is to use the "Sample Facebook App" link in the left navigation index. This example illustrates how you can integrate PlayRM with Facebook's PHP and JavaScript SDKs. You can view the <a href="https://apps.facebook.com/playnomicstest/" target="_blank">live example</a>. Keep in mind, the PlayRM Javascript SDK is not Facebook exclusive and will work in any Javascript game context.
 
 
 ## Considerations for Cross-Platform Games
 
-If you want to deploy your game to multiple platforms (eg: JavaScript for Facebook and the Unity Web player), you'll need to create a separate Playnomics Applications in the control panel. Each application must incorporate a separate `<APPID>` particular to that application. In addition, message frames and their respective creative uploads will be particular to that app in order to ensure that they are sized appropriately - proportionate to your game screen size.
+If you want to deploy your game to multiple platforms (eg: JavaScript for Facebook and the Unity Web player), you'll need to create separate applications in the control panel. Each application must incorporate a separate `<APPID>` particular to that application. In addition, placements and their respective creative uploads will be particular to that app in order to ensure that they are sized appropriately - proportionate to your game screen size.
 
 
 
 # Basic Integration
 Integration is as simple as adding the code snippet below into your game. Upon initial integration, the SDK will be running in **test mode**. Be sure to switch to [production mode](#switch-sdk-to-production-mode) before deploying your application.
 
- This code needs to incorporate your `<APPID>`, found on your control panel, and it must provide a `<USER-ID>`. The `<USER-ID>` helps PlayRM consistently identify each player over their lifetime in a game.
+ This code needs to incorporate your `<APPID>`, found on your control panel, and it must provide a `<USER-ID>`. The `<USER-ID>` helps PlayRM consistently identify each player over his or her lifetime in a game.
 
 Once loaded, the SDK will automatically begin collecting basic user information (including geography) and engagement data, and send it to the PlayRM test servers.
 
@@ -73,10 +73,10 @@ _pnConfig.userId="<?echo $user_info["user_id"]?>";
 `_pnConfig.onLoadComplete` allows you to optionally pass a callback that will be fired when the SDK has finished initialization.This a common place to call the [user info module](#demographics-and-install-attribution).
 
 
-Congratulations! You've completed our basic integration. You will now be able to track engagement behaviors (having incorporated the Engagement Module) from the PlayRM dashboard. At this point we recomend that you use our integration validation tool to test your integration of our SDK in order insure that it has been properly incorporated in your game. 
+Congratulations! You've completed our basic integration. You will now be able to track engagement behaviors (having incorporated the Engagement Module) from the PlayRM dashboard. At this point we recommend that you use our integration validation tool to test your integration of our SDK in order insure that it has been properly incorporated in your game. 
 
 
-PlayRM is currently operating in test mode. Be sure you switch to [production mode](#switch-sdk-to-production-mode), by implementing the code call outlined in our Basic Integration before deployingyour game on the web or in an app store.
+PlayRM is currently operating in test mode. Be sure you switch to [production mode](#switch-sdk-to-production-mode), by implementing the code call outlined in our Basic Integration before deploying your game on the web or in an app store.
 
 # Full Integration
 
@@ -100,10 +100,7 @@ PlayRM is currently operating in test mode. Be sure you switch to [production mo
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#invitations-and-virality">Invitations and Virality</a>
-                </li>
-                <li><a href="#custom-event-tracking">Custom Event Tracking</a></li>
+   <li><a href="#custom-event-tracking">Custom Event Tracking</a></li>
                 <li><a href="#validate-integration">Validate Integration</a></li>
                 <li><a href="#switch-sdk-to-production-mode">Switch SDK to Production Mode</a></li>
             </ul>
@@ -133,16 +130,15 @@ If you're reading this it's likely that you've integrated our SDK and are intere
 
 The index on the right provides a holistic overview of the <strong>full integration</strong> process. From it, you can jump to specific points in this document depending on what you're looking to learn and do.
 
-To clarify where you are in the timeline of our integration process, you've completed our basic integration. Doing so will enable you to track engagement behaviors from the PlayRM dashboard (having incorporated the Engagement Module). The following documentation will provides succint information on how to incorporate additional and more in-depth segmentation functionality by integrating any, or all of the following into your game:
+To clarify where you are in the timeline of our integration process, you've completed our basic integration. Doing so will enable you to track engagement behaviors from the PlayRM dashboard (having incorporated the Engagement Module). The following documentation provides succinct information on how to incorporate additional and more in-depth segmentation functionality by integrating any, or all of the following into your game:
 
 <ul>
     <li><strong>User Info Module:</strong> - provides basic user information</li>
     <li><strong>Monetization Module:</strong> - tracks various monetization events and transactions</li>
-    <li><strong>Virality Module:</strong> - tracks the social activities of users</li>
-    <li><strong>Milestone Module:</strong> - tracks significant player events customized to your game</li>
+   <li><strong>Custom Events Module:</strong> - tracks significant player events customized to your game</li>
 </ul>
 
-Along with integration instructions for our various modules, you will also find integration information pertaining to messaging frame setup, as well as a sample facebook application with code examples to contextualize how you might incorporate our SDK. 
+Along with integration instructions for our various modules, you will also find integration information pertaining to messaging frame setup, as well as a sample Facebook application with code examples to contextualize how you might incorporate our SDK. 
 
 
 ## Demographics and Install Attribution
@@ -208,7 +204,7 @@ pnTransaction(transactionId, itemId, quantity, type, otherUserId, currencyTypes,
 <table>
     <tr>
         <td><code>transactionId</code></td>
-        <td>A unique identifier for this transaction. If this is Facebook, you can use the order ID provided to you by Facebook. You can also use an internal ID. If nothing else is available, you can genenate large random number.</td>
+        <td>A unique identifier for this transaction. If this is Facebook, you can use the order ID provided to you by Facebook. You can also use an internal ID. If nothing else is available, you can generate large random number.</td>
     </tr>
     <tr>
         <td><code>itemId</code></td>
@@ -369,87 +365,11 @@ var premiumCost = 5;
 pnTransaction(transactionId, item, itemQuantity, transType, null, premimumCurrency, premiumCost, "v");
 ```
 
-## Invitations and Virality
-
-The virality module allows you to track a single invitation from one player to another (e.g., inviting friends to join a game on Facebook).
-
-If multiple requests can be sent at the same time, such as through the Facebook Friend selector, a separate function call should be made for each recipient. The Sample App details how to work with the Facebook Requests dialog.
-
-```javascript
-pnInvitationSent(invitationId, recipientUserId, recipientAddress, method);
-```
-<table>
-    <tr>
-        <td><code>invitationId</code></td>
-        <td>
-            A unique 64-bit integer identifier for this invitation
-
-            If this is a Facebook application, you can use the appRequestId.
-
-            If no identifier is available, this could be a hash/MD5/SHA1 of the sender's and neighbor's IDs concatenated. <strong>The resulting identifier can not be personally identifiable.</strong>
-        </td>
-    </tr>
-    <tr>
-        <td><code>recipientUserId</code></td>
-        <td>This can be a hash/MD5/SHA1 of the recipient's Facebook ID, their Facebook 3rd Party ID or an internal ID. It cannot be a personally identifiable ID.</td>
-    </tr>
-    <tr>
-        <td><code>recipientAddress</code></td>
-        <td>
-            An optional way to identify the recipient, for example the <strong>hashed email address</strong>. When using <code>recipientUserId</code> this can be <code>null</code>.
-        </td>
-    </tr>
-    <tr>
-        <td><code>method</code></td>
-        <td>
-            The method of the invitation request will include one of the following:
-            <ul>
-                <li>facebookRequest</li>
-                <li>email</li>
-                <li>twitter</li>
-            </ul>
-        </td>
-    </tr>
-</table>
-
-You can then track each invitation response. **IMPORTANT:** you will need to pass the invitationId through the invitation link. Facebook exposes the appRequestIDs through their query string and we illustrate how you can consume them in the Sample App.
-
-```javascript
-pnInvitationResponse(invitationId, recipientUserId, response);
-```
-<table>
-    <tr>
-        <td><code>invitationId</code></td>
-        <td>the ID of the corresponding invitation sent event.</td>
-    </tr>
-    <tr>
-        <td><code>recipientUserId</code></td>
-        <td>the recipient ID used in the corresponding invitation sent event</td>
-    </tr>
-    <tr>
-        <td><code>response</code></td>
-        <td>Currently this only supports "accepted"</td>
-    </tr>
-</table>
-
-Example calls for a player's invitation and the recipient's acceptance:
-
-```javascript
-var invitationId = 112345675;
-var recipientUserId = 10000013;
-
-pnInvitationSent(invitationId, recipientUserId, null, null); 
-
-//later on the recipient accepts the invitation
-
-pnInvitationResponse(invitationId, recipientUserId, "accepted"); 
-```
-
 ## Custom Event Tracking
 
-Milestones may be defined in a number of ways.  They may be defined at certain key gameplay points like, finishing a tutorial, or may they refer to other important milestones in a player's lifecycle. PlayRM, by default, supports up to five custom milestones.  Players can be segmented based on when and how many times they have achieved a particular milestone.
+Custom Events may be used in a number of ways.  They can be used to track certain key gameplay events such as finishing a tutorial or receiving a high score. They may also be used to track other important lifecycle events such as level up, zone unlocked, etc.  PlayRM, by default, supports up to five custom events.  You can then use these custom events to create more targeted custom segments.
 
-Each time a player reaches a milestone, track the milestone using the JavaScript call:
+Each time a player completes a certain event, track it with this call:
 
 ```javascript
 pnMilestone(milestoneId, milestoneName);
@@ -459,18 +379,18 @@ These parameters should be replaced:
 <table>
     <tr>
         <td><code>milestoneId</code></td>
-        <td>A unique 64-bit numeric identifier for this milestone occurrence</td>
+        <td>A unique 64-bit numeric identifier for this custom event occurrence</td>
     </tr>
     <tr>
         <td><code>milestoneName</code></td>
         <td>
-            The name of the milestone which should be "CUSTOMn", where n is 1 through 5.
+            The name of the custom event which should be "CUSTOMn", where n is 1 through 5.
             The name is case-sensitive.
         </td>
     </tr>
 </table>
 
-Example client-side calls for a player's reaching a milestone, with generated IDs:
+Example client-side calls for a player's reaching a custom event, with generated IDs:
 
 ```javascript
 function generateLargeId(){
@@ -512,21 +432,21 @@ If you ever wish to test or troubleshoot your integration later on, simply switc
 Messaging Integration
 =====================
 
-This guide assumes you're already familiar with the concept of frames and messaging, and that you have all of the relevant `frames` setup for your application.
+This guide assumes you're already familiar with the concept of placements and messaging, and that you have all of the relevant `placements` setup for your application.
 
 If you are new to PlayRM's messaging feature, please refer to <a href="http://integration.playnomics.com/support/#core-concepts" target="_blank">Core Concepts for Messaging</a>.
 
-Once you have all of your frames created with their associated `<PLAYRM-FRAME-ID>`s, you can start the integration process.
+Once you have all of your placements created with their associated `<PLAYRM-FRAME-ID>`s, you can start the integration process.
 
 ## SDK Integration
 
-To tell PlayRM where to place the frame, you first create an empty `div` element in the appropriate location (the id of the `div` is arbitrary):
+To tell PlayRM where to place the placement, you first create an empty `div` element in the appropriate location (the id of the `div` is arbitrary):
 
 ```html
 <div id="messageDiv"></div>
 ```
 
-Then modify the PlayRM SDK config `_pnConfig` to let PlayRM know about your frame:
+Then modify the PlayRM SDK config `_pnConfig` to let PlayRM know about your placement:
 
 ```javascript
 //this frame is specific to this sample game only
@@ -549,7 +469,7 @@ _pnAPI.async=true;_pnAPI.src=_pnAPIURL;document.body.appendChild(_pnAPI);
 
 After the SDK has initialized, PlayRM will automatically find the `<div>` tag and replace it with an `iframe` of the appropriate width and height.
 
-Note: This means that the `<div>` tag must exist in the HTML DOM when the SDK initialized.  To achieve greater control over when the frame appears, you could dynamically control its visibility using CSS property as show in this example:
+Note: This means that the `<div>` tag must exist in the HTML DOM when the SDK initialized.  To achieve greater control over when the placement appears, you could dynamically control its visibility using CSS property as show in this example:
 
 ```html
 <div style="display:none" id="GameEndInScreen">
@@ -562,7 +482,7 @@ Note: This means that the `<div>` tag must exist in the HTML DOM when the SDK in
 ### Using Rich Data Callbacks
 Rich Data is a JSON message that you associate with your message creative. When the player presses the message, the PlayRM SDK bubbles-up the associated JSON object to a function that you assign to your frame.
 
-You attach a function to the frame to process JSON data related to a frame. 
+You attach a function to the placement to process JSON data related to a placement. 
 
 ```javascript
 _pnConfig["b0_barDivId"] ="messageDiv";
@@ -709,10 +629,9 @@ This sample code is a very simple use-case; in reality, your game integration mi
 ## Assumptions
 
 * We treat every player like a new player. In reality, **your game server should keep track of each player that joins your game and report attribution appropriately.**
-* The game store just has two items and everything is hard-coded. Yuck. We also share the store information with the client (JSON object dump) so that we can better understand the transaction taking place on the client side. Your implementation will likely be more data-driven, and should be more selective about what information is available to the web browser.
+* The game store just has two items and everything is hard-coded. Yuck. We also share the store information with the client (JSON object dump) so that we can better understand the transaction that is taking place on the client side. Your implementation will likely be more data-driven, and should be more selective about what information is available to the web browser.
 
 Contact Support
 ===============
 
 If you have any questions or issues, please contact <a href="mailto:support@playnomics.com">support@playnomics.com</a>.
-
