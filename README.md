@@ -398,7 +398,7 @@ function generateLargeId(){
 }
  
 
-//when milestone CUSTOM1 is reached
+// when custom event CUSTOM1 is completed 
 var milestoneCustom1Id = generateLargeId(); 
 pnMilestone(milestoneCustom1Id, "CUSTOM1"); 
 ```
@@ -634,3 +634,5 @@ Contact Support
 ===============
 
 If you have any questions or issues, please contact <a href="mailto:support@playnomics.com">support@playnomics.com</a>.
+
+
